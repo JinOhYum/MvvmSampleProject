@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+
+    <base-config cleartextTrafficPermitted="true">
+    </base-config>
+
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">kt.com</domain>
+        <domain includeSubdomains="true">olleh.com</domain>
+        <domain includeSubdomains="true">ktcdn.co.kr</domain>
+        <domain includeSubdomains="true">dev.m.my.kt.com</domain>
+    </domain-config>
+
+</network-security-config>
