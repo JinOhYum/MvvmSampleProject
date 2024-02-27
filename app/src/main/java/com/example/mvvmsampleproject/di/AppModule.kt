@@ -13,7 +13,7 @@ import javax.inject.Singleton
 /**
  * Hilt 에 핵심 Class 의존성 주입 모듈
  * Hilt 는 사용전 의존성 주입 관련 학습 필요
- *
+ * @Singleton 이 붙어있는 함수들은 앱이 실행이 되면 수명주기동안 싱글톤으로 유지가 되며 의존성 주입을 통해 객체를 공유하고 재사용 가능
  * **/
 @Module
 @InstallIn(SingletonComponent::class)
