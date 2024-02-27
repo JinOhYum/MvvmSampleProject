@@ -1,14 +1,15 @@
 package com.example.mvvmsampleproject.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.webkit.CookieManager
+import android.webkit.WebChromeClient
+import android.webkit.WebView
 import androidx.activity.viewModels
-import androidx.databinding.DataBindingUtil
-import com.example.mvvmsampleproject.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mvvmsampleproject.databinding.ActivityMainBinding
 import com.example.mvvmsampleproject.viewmodel.MainViewModel
-import com.ktshow.cs.ndkaes.NdkAes
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,6 +33,32 @@ class MainActivity : AppCompatActivity() {
 
     private fun init(){
         viewModel.onHttpSetAppCtnApi()
+
+        binding.webView.webChromeClient = WebChromeClient()
+        //202307-userAgent 초기화
+        binding.webView.settings.userAgentString = ""
+
+        binding.webView.addJavascriptInterface(viewModel.jsBridge, "ktCsNative")
+        binding.webView.clearHistory()
+        binding.webView.clearCache(true)
+        binding.webView.isFocusable = true
+        binding.webView.isFocusableInTouchMode = true
+        binding.webView.requestFocus(View.FOCUS_DOWN)
+        binding.webView.setInitialScale(1)
+        binding.webView.setVerticalScrollbarOverlay(true)
+        binding.webView.isHorizontalScrollBarEnabled = true
+        binding.webView.isVerticalScrollBarEnabled = true
+        binding.webView.setNetworkAvailable(true)
+        binding.webView.isDrawingCacheEnabled = true
+        binding.webView.clipChildren = true
+        binding.webView.scrollBarStyle = WebView.SCROLLBARS_OUTSIDE_OVERLAY
+        binding.webView.isScrollbarFadingEnabled = true
+        binding.webView.setLayerType(View.LAYER_TYPE_HARDWARE, null)
+        val cookieManager = CookieManager.getInstance()
+        cookieManager.setAcceptCookie(true)
+        cookieManager.setAcceptThirdPartyCookies(binding.webView, true)
+
+        binding.webView.loadUrl("https://m.my.kt.com/cardmain/v5/a_CardMain.do")
     }
 
     private fun onObserve(){

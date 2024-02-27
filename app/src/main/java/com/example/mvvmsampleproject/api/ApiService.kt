@@ -37,7 +37,11 @@ interface ApiService {
         }
     }
 
-    //suspend 비동기로 처리해야됨
+    /**
+     * Response<ResponseBody> 리턴 하는데
+     * 보통은 예시) Response<BaseApiDto> 이런식으로 ModelClass 를 넣어야하지만
+     * Kt API 에서 값을 줄떄 암호화 상태로 값을 줘서 ResponseBody 를 사용해 String 으로 값을 뽑은후 암호화를 풀어서 ModelClass 에서 set 형식으로 넣어야함
+     * **/
     @FormUrlEncoded
     @POST("/api/v5/a_Intro.json")
     suspend fun onHttpIntroApi(@Field("market") market : String, @Field("deviceWidth") deviceWidth : String, @Field("deviceHeight") deviceHeight : String): Response<ResponseBody>

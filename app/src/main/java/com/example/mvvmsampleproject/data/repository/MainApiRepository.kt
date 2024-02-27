@@ -8,10 +8,12 @@ import okhttp3.ResponseBody
 import retrofit2.Response
 import javax.inject.Inject
 
-//레포시토리 패턴
-class MainApiRepository @Inject constructor(private val apiService: ApiService ) {
+//Repository 패턴
+/**
+ * MainActivity 에서 사용되는 API는 여기서 관리
+ * **/
+class MainApiRepository @Inject constructor(private val apiService: ApiService){
 
-    //suspend 비동기로 처리해야됨
     suspend fun onHttpIntroApi(market : String , deviceWidth : String , deviceHeight : String) : Response<ResponseBody> {
 
         return apiService.onHttpIntroApi(market, deviceWidth, deviceHeight)

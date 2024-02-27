@@ -2,35 +2,25 @@ package com.example.mvvmsampleproject.api
 
 import android.webkit.JavascriptInterface
 
-class JsBridge {
+class JsBridge (private val callback: JsCallback, private val tag: String = "JsBridge_"){
 
     interface JsCallback {
         fun onRequestFromJs(requestId: Int, tag: String?, vararg params: String?)
     }
 
-    private lateinit var callback: JsCallback
-    private var tag = "JsBridge_"
-
-    constructor(callback: JsCallback?) {
-        this.callback = callback!!
-    }
-
-    constructor(callback: JsCallback , tag : String) {
-        this.callback = callback
-        this.tag = tag
-    }
+//    private lateinit var callback: JsCallback
+//    private var tag = "JsBridge_"
 
 
-    val JS_REQ_GET_BADGE_CNT = 1
+    val JS_REQ_DO_MRKTNG_TOAST_POPUP = 62
 
     private fun requestCallback(requestId: Int, vararg params: String?) {
         callback.onRequestFromJs(requestId, tag, *params)
     }
 
-    // 배지 개수 조회
     @JavascriptInterface
-    fun getBadgeCnt() {
-        requestCallback(JS_REQ_GET_BADGE_CNT)
+    fun doMrktngToastPopupOpen(json: String) {
+        requestCallback(JS_REQ_DO_MRKTNG_TOAST_POPUP, json)
     }
 
 }
