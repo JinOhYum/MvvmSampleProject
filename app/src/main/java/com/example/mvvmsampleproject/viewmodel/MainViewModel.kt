@@ -10,6 +10,7 @@ import com.example.mvvmsampleproject.api.JsBridge
 import com.example.mvvmsampleproject.data.model.IntroApiResponse
 import com.example.mvvmsampleproject.data.model.OpenLoginViewJsDto
 import com.example.mvvmsampleproject.data.repository.MainApiRepository
+import com.example.mvvmsampleproject.util.PreferenceUtil
 import com.google.gson.Gson
 import com.ktshow.cs.ndkaes.NdkAes
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,7 +21,7 @@ import javax.inject.Inject
  * MainActivity 에서 이벤트 요청 처리 및 반환 , 서버통신에서 받은 데이터 처리
  * **/
 @HiltViewModel //@HiltViewModel Hilt ViewModel
-class MainViewModel @Inject constructor(private val repository: MainApiRepository, var jsBridge: JsBridge) : ViewModel(),JsBridge.JsCallback  {
+class MainViewModel @Inject constructor(private val repository: MainApiRepository, var jsBridge: JsBridge , private val preferenceUtil: PreferenceUtil) : ViewModel(),JsBridge.JsCallback  {
 
     private val gson : Gson = Gson()
 
@@ -72,9 +73,14 @@ class MainViewModel @Inject constructor(private val repository: MainApiRepositor
 
                     // Gson을 사용하여 JSON을 IntroApiResponse 객체로 파싱
                     val introApiResponse = gson.fromJson(decryptedData, IntroApiResponse::class.java)
+
+                    preferenceUtil.setPreference(preferenceUtil.KEY_TEST,1)
 //
 //                    // LiveData에 값을 설정
                     _introApiResponse.postValue(introApiResponse)
+
+                    Log.d("여기","쉐어드"+preferenceUtil.getPreference(preferenceUtil.KEY_TEST,0))
+
                 }
 
                 false ->{

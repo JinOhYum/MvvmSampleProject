@@ -1,13 +1,16 @@
 package com.example.mvvmsampleproject.di
 
+import android.content.Context
 import android.util.Log
 import com.example.mvvmsampleproject.api.ApiService
 import com.example.mvvmsampleproject.api.JsBridge
 import com.example.mvvmsampleproject.data.repository.MainApiRepository
+import com.example.mvvmsampleproject.util.PreferenceUtil
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -28,10 +31,19 @@ object AppModule {
     fun provideServerApi():ApiService{
         return ApiService.create()
     }
+
+    //JS 브릿지 모듈
     @Singleton
     @Provides
     fun provideJsBridge(): JsBridge {
         return JsBridge()
+    }
+
+    //PreferenceUtil 모듈
+    @Singleton
+    @Provides
+    fun providePreferenceUtil(@ApplicationContext context: Context): PreferenceUtil {
+        return PreferenceUtil.create(context)
     }
 
 }
