@@ -1,5 +1,6 @@
 package com.example.mvvmsampleproject.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -27,17 +28,21 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        onObserve()
         init()
+        onObserve()
     }
 
+
+    @SuppressLint("SetJavaScriptEnabled")
     private fun init(){
+
         viewModel.onHttpSetAppCtnApi()
 
         binding.webView.webChromeClient = WebChromeClient()
         //202307-userAgent 초기화
         binding.webView.settings.userAgentString = ""
 
+        binding.webView.settings.javaScriptEnabled = true
         binding.webView.addJavascriptInterface(viewModel.jsBridge, "ktCsNative")
         binding.webView.clearHistory()
         binding.webView.clearCache(true)
@@ -45,27 +50,34 @@ class MainActivity : AppCompatActivity() {
         binding.webView.isFocusableInTouchMode = true
         binding.webView.requestFocus(View.FOCUS_DOWN)
         binding.webView.setInitialScale(1)
-        binding.webView.setVerticalScrollbarOverlay(true)
+//        binding.webView.setVerticalScrollbarOverlay(true)
         binding.webView.isHorizontalScrollBarEnabled = true
         binding.webView.isVerticalScrollBarEnabled = true
         binding.webView.setNetworkAvailable(true)
-        binding.webView.isDrawingCacheEnabled = true
+//        binding.webView.isDrawingCacheEnabled = true
         binding.webView.clipChildren = true
         binding.webView.scrollBarStyle = WebView.SCROLLBARS_OUTSIDE_OVERLAY
         binding.webView.isScrollbarFadingEnabled = true
         binding.webView.setLayerType(View.LAYER_TYPE_HARDWARE, null)
+
         val cookieManager = CookieManager.getInstance()
         cookieManager.setAcceptCookie(true)
         cookieManager.setAcceptThirdPartyCookies(binding.webView, true)
+        WebView.setWebContentsDebuggingEnabled(true)
 
         binding.webView.loadUrl("https://m.my.kt.com/cardmain/v5/a_CardMain.do")
     }
 
+    //옵저버 등록 함수
     private fun onObserve(){
 
         //introApiResponse 옵저버 데이터가 변경되면 반응
         viewModel.introApiResponse.observe(this){data ->
             Log.e("여기 UI 변동사항","data "+data.code)
+        }
+
+        viewModel.openLoginViewJsDto.observe(this){data ->
+            Log.e("여기 UI 변동사항","data "+data)
         }
     }
 }
