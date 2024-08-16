@@ -47,8 +47,6 @@ class MainActivity : BaseWebViewActivity() {
     //'androidx.activity:activity-ktx:1.8.2' 라이브러리를 추가해야 사용가능 액티비티와 뷰모델의 연결을 쉽게 만들어줌
     private val viewModel : MainViewModel by viewModels()
 
-    private val snackBarOption : SnackBarOption = SnackBarOption()
-
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             LogUtil.d("뒤로가기")
@@ -67,50 +65,20 @@ class MainActivity : BaseWebViewActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        setContentView(binding.root)
-
-        init()
-        setOnBottomClick()
-        setWebViewSetting()
-        onObserve()
-
-        binding.btTest.setOnClickListener {
-            val snackbar : Snackbar = Snackbar.make(binding.constraint,"왓섭",Snackbar.LENGTH_LONG)
-            snackbar.setAction("닫기") {
-                snackbar.dismiss()
-            }
-            snackBarOption.setSnackBarOption(snackbar)
-            snackbar.show()
+        setContentView(binding.root).apply {
+            init()
+            setOnBottomClick()
+            setWebViewSetting()
+            onObserve()
         }
 
-        binding.wbMain
-    }
-
-    override fun onWebViewStart(view: WebView?, urlType: Int, url: String?) {
-        super.onWebViewStart(view, urlType, url)
-    }
-
-    override fun onWebViewUrlChange(view: WebView?, urlType: Int, url: String?, isRedirect: Boolean): Boolean {
-        super.onWebViewUrlChange(view, urlType, url, isRedirect)
-        LogUtil.d("여기 onWebViewUrlChange ="+url)
-//        if(url != viewModel.mainActivityData.value!!.url){
-//            viewModel.setMainActivityUrl(url.toString())
-//        }
-        return false
     }
 
     override fun onWebViewProgressChanged(url: String?, newProgress: Int) {
-//        super.onWebViewProgressChanged(url, newProgress)
         LogUtil.d("여기 onWebViewProgressChanged ="+url)
         if (newProgress >= 100) {
             viewModel.setMainActivityUrl(url.toString())
         }
-        else{
-
-        }
-//        if(url != viewModel.mainActivityData.value!!.url){
-//            viewModel.setMainActivityUrl(url.toString())
-//        }
     }
 
     override fun onWebViewFinish(view: WebView?, url: String?) {
@@ -185,6 +153,7 @@ class MainActivity : BaseWebViewActivity() {
         }
     }
 
+    //마이케이티앱 웹뷰로드 로직 함수
     private fun onMainWebViewLoadUrl(url : String){
         if (TextUtils.isEmpty(url)) {
             return
@@ -255,9 +224,9 @@ class MainActivity : BaseWebViewActivity() {
         viewModel.mainActivityData.observe(this){data ->
             LogUtil.d("여기 Main Util 데이터 변동사항 data $data")
 
+            //하단탭바 감추기 여부
             if (!data.url.contains(URL_MENU)) {
-                if (data.url.contains(URL_MAIN) || data.url.contains(URL_BENEFIT)
-                    || data.url.contains(URL_SHOP)) {
+                if (data.url.contains(URL_MAIN) || data.url.contains(URL_BENEFIT) || data.url.contains(URL_SHOP)) {
                     binding.mainTabBar.root.visibility = View.VISIBLE
                 } else {
                     binding.mainTabBar.root.visibility = View.GONE
@@ -271,6 +240,7 @@ class MainActivity : BaseWebViewActivity() {
         }
     }
 
+    //현재 마이케이티앱 goBack 로직
     private fun goBack() {
         LogUtil.i("goBack")
         if (DataUtils.isNotNull(binding.wbMain) && canGoBack()) {
@@ -318,11 +288,8 @@ class MainActivity : BaseWebViewActivity() {
      * getLastHistory : 마지막 페이지의 url 조회
      */
     fun getLastHistory(): String {
-        if (binding.wbMain == null){
-            return ""
-        }
         val list: WebBackForwardList = binding.wbMain.copyBackForwardList()
-        if (list == null || list.size <= 1) return ""
+        if (list.size <= 1) return ""
         // 현재 인덱스
         val idx = list.currentIndex
         return if (idx < 1) "" else list.getItemAtIndex(idx - 1).url

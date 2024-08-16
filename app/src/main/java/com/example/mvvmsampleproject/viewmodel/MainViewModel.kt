@@ -34,6 +34,7 @@ class MainViewModel @Inject constructor(private val repository: MainApiRepositor
 
     private val gson : Gson = Gson()
 
+    //인트로 API 모델
     private val _introApiResponse = MutableLiveData<IntroApiResponse>()
     val introApiResponse : LiveData<IntroApiResponse> get() = _introApiResponse
 
@@ -91,12 +92,8 @@ class MainViewModel @Inject constructor(private val repository: MainApiRepositor
                     // Gson을 사용하여 JSON을 IntroApiResponse 객체로 파싱
                     val introApiResponse = gson.fromJson(decryptedData, IntroApiResponse::class.java)
 
-//                    preferenceUtil.setPreference(preferenceUtil.KEY_TEST,1)
-//
 //                    // LiveData에 값을 설정
                     _introApiResponse.postValue(introApiResponse)
-
-//                    Log.d("여기","쉐어드"+preferenceUtil.getPreference(preferenceUtil.KEY_TEST,0))
 
                 }
 
@@ -113,15 +110,7 @@ class MainViewModel @Inject constructor(private val repository: MainApiRepositor
     fun setBottomData(position : Int ,imageView : ImageView , textView: TextView ,
                       @RawRes gifNameRight : Int , @RawRes gifNameDark : Int , @DrawableRes baseImageName : Int){
         viewModelScope.launch {
-            _mainBottomData.add(
-                MainBottomData(
-                    position,
-                    imageView,
-                    textView,
-                    gifNameRight,
-                    gifNameDark,
-                    baseImageName
-                )
+            _mainBottomData.add(MainBottomData(position, imageView, textView, gifNameRight, gifNameDark, baseImageName)
             )
         }
     }
@@ -131,6 +120,7 @@ class MainViewModel @Inject constructor(private val repository: MainApiRepositor
         _mainActivityData.value = mainActivityData
     }
 
+    //Url 변동 여부
     fun setMainActivityUrl(url: String){
         _mainActivityData.value!!.url = url
         _mainActivityData.postValue(_mainActivityData.value)
