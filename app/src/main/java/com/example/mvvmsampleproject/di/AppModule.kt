@@ -29,7 +29,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideServerApi():ApiService{
-        return ApiService.create()
+        return ApiService.getInstance()
     }
 
     //JS 브릿지 모듈
@@ -39,11 +39,11 @@ object AppModule {
         return JsBridge()
     }
 
-    //PreferenceUtil 모듈
+//    //PreferenceUtil 모듈
     @Singleton
     @Provides
     fun providePreferenceUtil(@ApplicationContext context: Context): PreferenceUtil {
-        return PreferenceUtil.create(context)
+        return PreferenceUtil.getInstance(context)
     }
 
 }

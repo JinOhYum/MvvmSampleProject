@@ -19,7 +19,7 @@ interface ApiService {
     //생성자 로 레트로핏 셋팅
     companion object {
 
-        fun create(): ApiService {
+        fun getInstance(): ApiService {
             val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
 
             val gson = GsonBuilder() .setLenient() .create()

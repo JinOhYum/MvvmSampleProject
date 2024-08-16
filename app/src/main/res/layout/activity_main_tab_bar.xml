@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/main_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.5" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_menu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:contentDescription="@string/main_tabbar_menu_title_cd">
+
+                <ImageView
+                    android:id="@+id/iv_bottom_menu"
+                    android:layout_width="40dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/menu_icon"/>
+                <TextView
+                    android:id="@+id/menu_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/noto_sans_bold"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:importantForAccessibility="no"
+                    android:letterSpacing="-0.03"
+                    android:lineSpacingExtra="-3sp"
+                    android:text="@string/main_tabbar_menu_title"
+                    android:textColor="@color/color_949494"
+                    android:textSize="12dp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ll_benefit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/main_tabbar_benefits_title_cd">
+
+                <ImageView
+                    android:id="@+id/iv_bottom_benefit"
+                    android:layout_width="40dp"
+                    android:layout_height="28dp"
+                    android:src="@mipmap/benefit_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/benefits_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/noto_sans_bold"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:importantForAccessibility="no"
+                    android:letterSpacing="-0.03"
+                    android:lineSpacingExtra="-3sp"
+                    android:text="@string/main_tabbar_benefits_title"
+                    android:textColor="@color/color_949494"
+                    android:textSize="12dp"
+                    android:textStyle="normal"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_bottom_benefit" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_home"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:contentDescription="홈 버튼">
+
+                <ImageView
+                    android:id="@+id/iv_bottom_home"
+                    android:layout_width="40dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/home_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/my_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/noto_sans_bold"
+                    android:textStyle="normal"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:importantForAccessibility="no"
+                    android:letterSpacing="-0.03"
+                    android:lineSpacingExtra="-3sp"
+                    android:text="@string/main_tabbar_home_title"
+                    android:textColor="@color/color_949494"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ll_shop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/main_tabbar_shop_cd">
+
+                <ImageView
+                    android:id="@+id/iv_bottom_shop"
+                    android:layout_width="40dp"
+                    android:layout_height="28dp"
+                    android:src="@mipmap/shop_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/shop_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/noto_sans_bold"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:importantForAccessibility="no"
+                    android:letterSpacing="-0.03"
+                    android:lineSpacingExtra="-3sp"
+                    android:text="@string/main_tabbar_shop"
+                    android:textColor="@color/color_949494"
+                    android:textSize="12dp"
+                    android:textStyle="normal"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_bottom_shop"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_chatBot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:contentDescription="@string/main_tabbar_chatbot_cd">
+
+                <ImageView
+                    android:id="@+id/iv_bottom_chatbot"
+                    android:layout_width="40dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/chatbot_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/chatbot_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/noto_sans_bold"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:importantForAccessibility="no"
+                    android:letterSpacing="-0.03"
+                    android:lineSpacingExtra="-3sp"
+                    android:text="@string/main_tabbar_chatbot"
+                    android:textColor="@color/c_797979"
+                    android:textSize="12dp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.5" />
+
+    </LinearLayout>
+
+</LinearLayout>

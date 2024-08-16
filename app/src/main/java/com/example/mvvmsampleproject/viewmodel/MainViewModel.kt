@@ -1,27 +1,36 @@
 package com.example.mvvmsampleproject.viewmodel
 
-import android.text.TextUtils
 import android.util.Log
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.annotation.DrawableRes
+import androidx.annotation.RawRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mvvmsampleproject.api.JsBridge
 import com.example.mvvmsampleproject.data.model.IntroApiResponse
+import com.example.mvvmsampleproject.data.model.MainActivityData
+import com.example.mvvmsampleproject.data.model.MainBottomData
 import com.example.mvvmsampleproject.data.model.OpenLoginViewJsDto
 import com.example.mvvmsampleproject.data.repository.MainApiRepository
+import com.example.mvvmsampleproject.util.Constant
+import com.example.mvvmsampleproject.util.DefineConfig
 import com.example.mvvmsampleproject.util.PreferenceUtil
 import com.google.gson.Gson
 import com.ktshow.cs.ndkaes.NdkAes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import org.jetbrains.annotations.NotNull
 import javax.inject.Inject
 
 /**
  * MainActivity 에서 이벤트 요청 처리 및 반환 , 서버통신에서 받은 데이터 처리
  * **/
 @HiltViewModel //@HiltViewModel Hilt ViewModel
-class MainViewModel @Inject constructor(private val repository: MainApiRepository, var jsBridge: JsBridge , private val preferenceUtil: PreferenceUtil) : ViewModel(),JsBridge.JsCallback  {
+class MainViewModel @Inject constructor(private val repository: MainApiRepository,
+                                        private val preferenceUtil: PreferenceUtil,
+                                        val jsBridge: JsBridge) : BaseViewModel(),JsBridge.JsCallback  {
 
     private val gson : Gson = Gson()
 
@@ -31,9 +40,17 @@ class MainViewModel @Inject constructor(private val repository: MainApiRepositor
     private val _openLoginViewJsDto = MutableLiveData<OpenLoginViewJsDto>()
     val openLoginViewJsDto : LiveData<OpenLoginViewJsDto> get() = _openLoginViewJsDto
 
+    //ViewModel 하단 탭바 관리 데이터
+    private var _mainBottomData: ArrayList<MainBottomData> = ArrayList<MainBottomData>()
+    val mainBottomData: ArrayList<MainBottomData> get() = _mainBottomData
+
+    //하단 탭바 현재 position 관리 데이터
+    private var _mainActivityData: MutableLiveData<MainActivityData> = MutableLiveData<MainActivityData>()
+    val mainActivityData: LiveData<MainActivityData> get() = _mainActivityData
 
     init {
         jsBridge.setCallBack(this)
+        _mainActivityData.value = MainActivityData(2, DefineConfig.URL_MAIN, Constant.MY_TAB)
     }
 
     /**
@@ -41,12 +58,12 @@ class MainViewModel @Inject constructor(private val repository: MainApiRepositor
      * 자바스크립트 브릿지 에서 호출되서 처리되는 대부분 동작들은 UI와 밀접한 관계가 있어 Repository 에서 관리가 아닌 ViewModel 에서 관리
      * **/
     override fun onRequestFromJs(requestId: Int, tag: String?, vararg params: String?) {
-        when (requestId) {
-            jsBridge.JS_REQ_TEST -> {
-                // 웹뷰에서 들어오는 브릿지에 대한 처리
-                Log.d("여기","왔나22")
-
-                onJsOpenLoginView(params.toString())
+        viewModelScope.launch {
+            when (requestId) {
+                jsBridge.JS_REQ_TEST -> {
+                    // 웹뷰에서 들어오는 브릿지에 대한 처리
+//                    onJsOpenLoginView(params.toString())
+                }
             }
         }
     }
@@ -74,12 +91,12 @@ class MainViewModel @Inject constructor(private val repository: MainApiRepositor
                     // Gson을 사용하여 JSON을 IntroApiResponse 객체로 파싱
                     val introApiResponse = gson.fromJson(decryptedData, IntroApiResponse::class.java)
 
-                    preferenceUtil.setPreference(preferenceUtil.KEY_TEST,1)
+//                    preferenceUtil.setPreference(preferenceUtil.KEY_TEST,1)
 //
 //                    // LiveData에 값을 설정
                     _introApiResponse.postValue(introApiResponse)
 
-                    Log.d("여기","쉐어드"+preferenceUtil.getPreference(preferenceUtil.KEY_TEST,0))
+//                    Log.d("여기","쉐어드"+preferenceUtil.getPreference(preferenceUtil.KEY_TEST,0))
 
                 }
 
@@ -91,5 +108,32 @@ class MainViewModel @Inject constructor(private val repository: MainApiRepositor
         }
     }
 
+
+    //하단탭바 셋팅
+    fun setBottomData(position : Int ,imageView : ImageView , textView: TextView ,
+                      @RawRes gifNameRight : Int , @RawRes gifNameDark : Int , @DrawableRes baseImageName : Int){
+        viewModelScope.launch {
+            _mainBottomData.add(
+                MainBottomData(
+                    position,
+                    imageView,
+                    textView,
+                    gifNameRight,
+                    gifNameDark,
+                    baseImageName
+                )
+            )
+        }
+    }
+
+    //메인에서 사용하는 유틸 데이터
+    fun setMainActivityData(mainActivityData: MainActivityData){
+        _mainActivityData.value = mainActivityData
+    }
+
+    fun setMainActivityUrl(url: String){
+        _mainActivityData.value!!.url = url
+        _mainActivityData.postValue(_mainActivityData.value)
+    }
 
 }

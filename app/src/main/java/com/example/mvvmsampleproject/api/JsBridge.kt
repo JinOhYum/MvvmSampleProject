@@ -2,6 +2,7 @@ package com.example.mvvmsampleproject.api
 
 import android.util.Log
 import android.webkit.JavascriptInterface
+import com.example.mvvmsampleproject.util.LogUtil
 
 class JsBridge{
 
@@ -25,7 +26,11 @@ class JsBridge{
 
     @JavascriptInterface
     fun doTest() {
-        Log.d("여기","왔나11")
+        /**
+         * 콘솔 테스트 명령어
+         * window.ktCsNative.doTest();
+         * **/
+        LogUtil.d("doTest")
         requestCallback(JS_REQ_TEST)
     }
 
