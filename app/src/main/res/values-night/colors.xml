@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!--  [DR-2020-미등록] 마이케이티앱 웹접근성 개선 -->
+    <color name="colorStatusBar">#04A3BB</color>
+    <!--  [DR-2020-미등록] 마이케이티앱 웹접근성 개선 -->
+
+    <!--  [DR-2020-미등록] 마이케이티앱 웹접근성 개선 -->
+    f
+
+    <!--  [DR-2020-미등록] 마이케이티앱 웹접근성 개선 -->
+
+    <!--[DR-2021-06273] 마이케이티앱 웹접근성 추가 개선-->
+    <color name="colorButtonText01">#04A3BB</color>
+    <color name="colorButtonText02">#FFFFFF</color>
+    <!--<color name="colorSettingHeader">#e0e1e2</color>-->
+
+    <color name="colorListDivider">#e0e1e2</color>
+
+    <color name="colorSettingText05">#808080</color>
+
+    <color name="colorPopupTitle">#1b1e1f</color>
+    <color name="colorPopupDesc">#1b1e1f</color>
+    <color name="colorPopupDescDetail">#73787a</color>
+    <!--[DR-2021-06273] 마이케이티앱 웹접근성 추가 개선-->
+    <color name="colorPopupDescAccent">#04a3bb</color>
+    <color name="colorPopupDescBlack">#000000</color>
+
+    <!--[DR-2021-06273] 마이케이티앱 웹접근성 추가 개선-->
+
+    <!--[DR-2021-06273] 마이케이티앱 웹접근성 추가 개선-->
+
+    <color name="colorNotifyRed">#ea3434</color>
+    <!--<color name="colorNotifyBlack">#1b1e1f</color>-->
+
+<!--    <color name="colorWidgetErrorBg">#BF000000</color>-->
+    <!--color name="colorWidgetStyleBlack">#000000</color>-->
+    <!--<color name="colorWidgetGray">#73787a</color>-->
+    <color name="colorWidgetRed">#ea3434</color>
+
+
+    <!-- ocr, barcode -->
+    <color name="scanner_text_color">#ffffff</color>
+    <color name="scanner_dim_background">#AA000000</color>
+    <color name="scanner_title_background">#000000</color>
+
+    <!-- widget configure -->
+    <color name="widget_configure_tab_bg">#f9f9f9</color>
+    <color name="widget_configure_tab_focus">#00C4D8</color>
+    <color name="widget_configure_txt">#1b1e1f</color>
+
+
+    <!-- widget color -->
+    <!-- [DR-2019-63684] android 위젯 가독성 개선 -->
+    <color name="color_widget_style_black">#000000</color>
+    <color name="color_widget_style_white">#ffffff</color>
+
+    <!-- dark mode color -->
+    <color name="colorDarkModeBlack">#ffffff</color>
+    <color name="colorDarkModeWhite">#000000</color>
+
+    <color name="color222222">#222222</color>
+    <color name="color33c6c5">#33c6c5</color>
+    <color name="colorf4f4f4">#f4f4f4</color>
+    <color name="colorf7f7f7">#242424</color>
+    <color name="color5ddfde">#5ddfde</color>
+    <color name="color01a69f">#01a69f</color>
+    <color name="color1b1e1f">#1b1e1f</color>
+    <color name="colorf5f5f5">#f5f5f5</color>
+    <color name="color666666">#666666</color>
+    <color name="color767676">#767676</color>
+    <color name="colore9e9e9">#e9e9e9</color>
+    <color name="color7f7f7f">#7f7f7f</color>
+    <color name="color808080">#808080</color>
+    <color name="colorf2f2f2">#f2f2f2</color>
+    <color name="colord9d9d9">#d9d9d9</color>
+    <color name="color959595">#959595</color>
+    <color name="colorb2b2b2">#b2b2b2</color>
+    <color name="colore9efff">#e9efff</color>
+    <color name="colorf8f8f8">#f8f8f8</color>
+    <color name="coloreb4148">#eb4148</color>
+    <color name="colored1b23">#ed1b23</color>
+    <color name="colorea3434">#ea3434</color>
+    <color name="colorb5c8cd">#b5c8cd</color>
+    <color name="colord8e2e4">#d8e2e4</color>
+    <color name="color30b2b2b2">#30b2b2b2</color>
+    <color name="color30ffffff">#30ffffff</color>
+    <color name="colore0e1e2">#e0e1e2</color>
+    <color name="colorc0f4f4f9">#c0f5f5f5</color>
+    <color name="color80f4f4f9">#80f5f5f5</color>
+    <color name="color40f4f4f9">#40f5f5f5</color>
+    <color name="color00f4f4f9">#00f5f5f5</color>
+    <color name="colorc0ffffff">#c0ffffff</color>
+    <color name="color80ffffff">#80ffffff</color>
+    <color name="color40ffffff">#40ffffff</color>
+    <color name="color00ffffff">#00ffffff</color>
+    <color name="colorc0000000">#c0000000</color>
+    <color name="color80000000">#80000000</color>
+    <color name="color40000000">#40000000</color>
+    <color name="color00000000">#00000000</color>
+    <color name="colorff000000">#ff000000</color>
+    <color name="colord6d6d6">#d6d6d6</color>
+    <color name="color_subtext">#009696</color>
+    <color name="color888888">#888888</color>
+
+    <color name="status_bg">#000000</color>
+    <color name="toolbar_bg">#000000</color>
+    <color name="setting_sub_bg">#1c1c1e</color>
+    <color name="setting_empty_bg">#1c1c1e</color>
+    <color name="setting_line_01">#2c2c2e</color>
+    <color name="setting_line_02">#2c2c2e</color>
+    <color name="setting_sub_txt">#959595</color>
+    <color name="setting_toggle_txt">#808080</color>
+    <color name="alarm_bg">#000000</color>
+    <color name="alarm_last_msg">#808080</color>
+    <color name="otp_bg">#000000</color>
+    <color name="otp_input_bg">#2c2c2e</color>
+    <color name="otp_info_txt">#aeaeae</color>
+    <color name="barcode_bg">#50000000</color>
+    <color name="dark_cancel">#959595</color>
+    <color name="versioon_cur">#ffffff</color>
+    <color name="versioon_update">#ffffff</color>
+
+    <color name="notify_c222222">#ffffff</color>
+    <color name="notify_c444444">#e9e9e9</color>
+    <color name="notify_ce2e2e6">#5d5d60</color>
+    <color name="notify_c666666">#e9e9e9</color>
+    <color name="notify_c777777">#000000</color>
+    <color name="notify_circle_stroke">#000000</color>
+    <color name="notify_al_common_bg">#888888</color>
+    <color name="notify_al_data_bg">#888888</color>
+
+    <color name="c_ededed">#ededed</color>
+    <color name="c_797979">#797979</color>
+    <color name="c_171717">#171717</color>
+    <color name="c_f7f7f7">#f7f7f7</color>
+
+
+</resources>

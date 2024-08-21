@@ -14,20 +14,30 @@ import android.webkit.PermissionRequest
 import android.webkit.SslErrorHandler
 import android.webkit.ValueCallback
 import android.webkit.WebView
+import androidx.lifecycle.lifecycleScope
 import com.example.mvvmsampleproject.api.JsBridge
+import com.example.mvvmsampleproject.util.CommonUtil
+import com.example.mvvmsampleproject.util.DataUtils
 import com.example.mvvmsampleproject.util.Define
 import com.example.mvvmsampleproject.util.DefineCode
+import com.example.mvvmsampleproject.util.DefineUrl
 import com.example.mvvmsampleproject.util.LogUtil
 import com.example.mvvmsampleproject.util.webkit.CustomWebChromeClient
 import com.example.mvvmsampleproject.util.webkit.CustomWebViewClient
 import com.example.mvvmsampleproject.util.webview.CustomWebView
 import com.example.mvvmsampleproject.util.webview.OnWebViewListener
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 open class BaseWebViewActivity : BaseActivity() , OnWebViewListener {
 
 
+    private lateinit var webView : CustomWebView
+
+
     @SuppressLint("SetJavaScriptEnabled")
     fun setWebView(webView : CustomWebView, jsBridge : JsBridge,  isWindowOpen : Boolean){
+        this.webView = webView
         LogUtil.e("WebView setWebView ")
 
         val chromeClient : CustomWebChromeClient
@@ -103,6 +113,40 @@ open class BaseWebViewActivity : BaseActivity() , OnWebViewListener {
             val javascript = script
             Thread { runOnUiThread { webView.loadUrl(javascript) } }.start()
         } catch (e: Exception) {
+        }
+    }
+
+    //현재 마이케이티앱 goBack 로직
+    fun goBack() {
+        LogUtil.i("goBack")
+        if (DataUtils.isNotNull(webView) && CommonUtil.getCanGoBack(webView.canGoBack())) {
+            val lastHistory: String = CommonUtil.getLastHistory(webView.copyBackForwardList())
+            val curUrl: String = webView.url.toString()
+            // 패밀리박스 가입단계에서 Back버튼 클릭시 가입중단 안내 팝업 노출을 위해 체크
+            if (curUrl.contains(DefineUrl.URL_FAMILY_BOX_JOIN)) {
+                lifecycleScope.launch(Dispatchers.Main) {
+                    webView.loadUrl("javascript:joinExitConfirm()")
+                }
+                return
+            }
+            if (!TextUtils.isEmpty(lastHistory) && (DefineUrl.URL_BLANK == lastHistory || !TextUtils.isEmpty(
+                    curUrl
+                ) && curUrl == lastHistory)
+            ) {
+                if (webView.canGoBackOrForward(-2)) {
+                    webView.goBackOrForward(-2)
+                } else {
+                    webView.goBack()
+                }
+            } else if (CommonUtil.checkGoBackForward(curUrl)) { // [DR-2019-25911] Android IPIN 화면 뒤로가기 오류 수정
+                if (webView.canGoBackOrForward(-2)) {
+                    webView.goBackOrForward(-2)
+                } else {
+                    webView.goBack()
+                }
+            } else {
+                webView.goBack()
+            }
         }
     }
 

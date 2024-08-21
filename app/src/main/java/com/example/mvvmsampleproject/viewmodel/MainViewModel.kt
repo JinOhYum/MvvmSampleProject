@@ -79,7 +79,7 @@ class MainViewModel @Inject constructor(private val repository: MainApiRepositor
     /***
      * Retrofit2 API 서버통신
      * **/
-    fun onHttpSetAppCtnApi(){
+    fun onHttpIntroApi(){
         viewModelScope.launch {
             val response = repository.onHttpIntroApi("02","1440","2851")
 

@@ -7,12 +7,18 @@
     android:id="@+id/constraint"
     tools:context=".view.MainActivity">
 
-    <com.example.mvvmsampleproject.util.webview.CustomWebView
-        android:id="@+id/wb_main"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefreshlayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/main_tab_bar"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/main_tab_bar">
+
+        <com.example.mvvmsampleproject.util.webview.CustomWebView
+            android:id="@+id/wb_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
     <include

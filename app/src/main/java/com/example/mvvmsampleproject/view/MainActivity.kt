@@ -4,11 +4,9 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import android.webkit.WebBackForwardList
 import android.webkit.WebView
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -19,13 +17,11 @@ import com.bumptech.glide.request.target.Target
 import com.example.mvvmsampleproject.R
 import com.example.mvvmsampleproject.data.model.MainActivityData
 import com.example.mvvmsampleproject.databinding.ActivityMainBinding
-import com.example.mvvmsampleproject.util.CommonUtil
 import com.example.mvvmsampleproject.util.Constant.BENEFIT_TAB
 import com.example.mvvmsampleproject.util.Constant.CHATBOT_TAB
 import com.example.mvvmsampleproject.util.Constant.MENU_TAB
 import com.example.mvvmsampleproject.util.Constant.MY_TAB
 import com.example.mvvmsampleproject.util.Constant.SHOP_TAB
-import com.example.mvvmsampleproject.util.DataUtils
 import com.example.mvvmsampleproject.util.DefineConfig.Companion.URL_BENEFIT
 import com.example.mvvmsampleproject.util.DefineConfig.Companion.URL_CHATBOT
 import com.example.mvvmsampleproject.util.DefineConfig.Companion.URL_MAIN
@@ -33,12 +29,8 @@ import com.example.mvvmsampleproject.util.DefineConfig.Companion.URL_MENU
 import com.example.mvvmsampleproject.util.DefineConfig.Companion.URL_SHOP
 import com.example.mvvmsampleproject.util.DefineUrl
 import com.example.mvvmsampleproject.util.LogUtil
-import com.example.mvvmsampleproject.util.SnackBarOption
 import com.example.mvvmsampleproject.viewmodel.MainViewModel
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : BaseWebViewActivity() {
@@ -90,7 +82,7 @@ class MainActivity : BaseWebViewActivity() {
     //MainActivity 셋팅
     private fun init(){
         this.onBackPressedDispatcher.addCallback(this , onBackPressedCallback)
-        viewModel.onHttpSetAppCtnApi()
+        viewModel.onHttpIntroApi()
 
         viewModel.setBottomData(0,binding.mainTabBar.ivBottomMenu , binding.mainTabBar.menuText  , R.raw.menu_icon , R.raw.menu_icon_dark , R.mipmap.menu_icon)
         viewModel.setBottomData(1,binding.mainTabBar.ivBottomBenefit , binding.mainTabBar.benefitsText  , R.raw.benefit_icon , R.raw.benefit_icon_dark ,R.mipmap.benefit_icon)
@@ -99,6 +91,21 @@ class MainActivity : BaseWebViewActivity() {
         viewModel.setBottomData(4,binding.mainTabBar.ivBottomChatbot , binding.mainTabBar.chatbotText  , R.raw.chat_icon , R.raw.chat_icon_dark  , R.mipmap.chatbot_icon)
 
         setBottomGifLoad(true, viewModel.mainActivityData.value!!.mainBottomPosition)
+
+
+        binding.swiperefreshlayout.setOnRefreshListener {
+            //202302-새로고침 이슈 수정
+            val url = binding.wbMain.url
+            if (url!!.contains(DefineUrl.URL_MAIN) || url.contains(DefineUrl.URL_BENEFIT) || url.contains(DefineUrl.URL_SHOP)) {
+                // 202303-웹뷰 스크립트 오류시 새로고침 안되는 이슈발생으로
+                binding.wbMain.loadUrl(url)
+            } else if (url.contains(DefineUrl.URL_MAIN_V2)) {
+                binding.wbMain.loadUrl(DefineUrl.URL_MAIN)
+            }
+
+            binding.swiperefreshlayout.isRefreshing = false
+        }
+
     }
 
     //옵저버 등록 함수
@@ -139,8 +146,8 @@ class MainActivity : BaseWebViewActivity() {
             setMainTabBarLoadUrl(URL_SHOP)
         }
         binding.mainTabBar.llChatBot.setOnClickListener {
-            viewModel.setMainActivityData(MainActivityData(viewModel.mainActivityData.value!!.mainBottomPosition, URL_CHATBOT, CHATBOT_TAB))
-            setMainTabBarLoadUrl(URL_CHATBOT)
+//            viewModel.setMainActivityData(MainActivityData(viewModel.mainActivityData.value!!.mainBottomPosition, URL_CHATBOT, CHATBOT_TAB))
+//            setMainTabBarLoadUrl(URL_CHATBOT)
         }
     }
     //마이케이티앱 웹뷰로드 로직 함수
@@ -263,45 +270,12 @@ class MainActivity : BaseWebViewActivity() {
                 viewModel.setMainActivityData(MainActivityData(3, url, SHOP_TAB))
             }
             URL_CHATBOT ->{//챗봇
-                viewModel.setMainActivityData(MainActivityData(4, url, SHOP_TAB))
+//                viewModel.setMainActivityData(MainActivityData(4, url, SHOP_TAB))
             }
         }
 
         setBottomGifLoad(true, viewModel.mainActivityData.value!!.mainBottomPosition)
     }
 
-    //현재 마이케이티앱 goBack 로직
-    private fun goBack() {
-        LogUtil.i("goBack")
-        if (DataUtils.isNotNull(binding.wbMain) && CommonUtil.getCanGoBack(binding.wbMain.canGoBack())) {
-            val lastHistory: String = CommonUtil.getLastHistory(binding.wbMain.copyBackForwardList())
-            val curUrl: String = binding.wbMain.url.toString()
-            // 패밀리박스 가입단계에서 Back버튼 클릭시 가입중단 안내 팝업 노출을 위해 체크
-            if (curUrl.contains(DefineUrl.URL_FAMILY_BOX_JOIN)) {
-                lifecycleScope.launch(Dispatchers.Main) {
-                    binding.wbMain.loadUrl("javascript:joinExitConfirm()")
-                }
-                return
-            }
-            if (!TextUtils.isEmpty(lastHistory) && (DefineUrl.URL_BLANK == lastHistory || !TextUtils.isEmpty(
-                    curUrl
-                ) && curUrl == lastHistory)
-            ) {
-                if (binding.wbMain.canGoBackOrForward(-2)) {
-                    binding.wbMain.goBackOrForward(-2)
-                } else {
-                    binding.wbMain.goBack()
-                }
-            } else if (CommonUtil.checkGoBackForward(curUrl)) { // [DR-2019-25911] Android IPIN 화면 뒤로가기 오류 수정
-                if (binding.wbMain.canGoBackOrForward(-2)) {
-                    binding.wbMain.goBackOrForward(-2)
-                } else {
-                    binding.wbMain.goBack()
-                }
-            } else {
-                binding.wbMain.goBack()
-            }
-        }
-    }
 
 }
