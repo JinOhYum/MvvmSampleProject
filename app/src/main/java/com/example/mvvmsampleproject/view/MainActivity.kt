@@ -19,6 +19,7 @@ import com.bumptech.glide.request.target.Target
 import com.example.mvvmsampleproject.R
 import com.example.mvvmsampleproject.data.model.MainActivityData
 import com.example.mvvmsampleproject.databinding.ActivityMainBinding
+import com.example.mvvmsampleproject.util.CommonUtil
 import com.example.mvvmsampleproject.util.Constant.BENEFIT_TAB
 import com.example.mvvmsampleproject.util.Constant.CHATBOT_TAB
 import com.example.mvvmsampleproject.util.Constant.MENU_TAB
@@ -75,9 +76,9 @@ class MainActivity : BaseWebViewActivity() {
     }
 
     override fun onWebViewProgressChanged(url: String?, newProgress: Int) {
-        LogUtil.d("여기 onWebViewProgressChanged ="+url)
+        LogUtil.d("여기 onWebViewProgressChanged ="+url + " "+newProgress)
         if (newProgress >= 100) {
-            viewModel.setMainActivityUrl(url.toString())
+            setBottomTabPosition(url.toString())
         }
     }
 
@@ -98,6 +99,25 @@ class MainActivity : BaseWebViewActivity() {
         viewModel.setBottomData(4,binding.mainTabBar.ivBottomChatbot , binding.mainTabBar.chatbotText  , R.raw.chat_icon , R.raw.chat_icon_dark  , R.mipmap.chatbot_icon)
 
         setBottomGifLoad(true, viewModel.mainActivityData.value!!.mainBottomPosition)
+    }
+
+    //옵저버 등록 함수
+    private fun onObserve(){
+
+        //introApiResponse 옵저버 데이터가 변경되면 반응
+        viewModel.introApiResponse.observe(this){data ->
+            LogUtil.d("여기 UI 변동사항 "+data.code)
+        }
+
+        viewModel.openLoginViewJsDto.observe(this){data ->
+            LogUtil.d("여기 UI 변동사항 $data")
+        }
+
+        viewModel.mainActivityData.observe(this){data ->
+            LogUtil.d("여기 Main Util 데이터 변동사항 data $data")
+            //하단탭바 감추기 여부
+            isBottomTabVisible(data)
+        }
     }
 
     //하단 탭바 클릭 셋팅
@@ -123,36 +143,6 @@ class MainActivity : BaseWebViewActivity() {
             setMainTabBarLoadUrl(URL_CHATBOT)
         }
     }
-
-    //하단탭바 클릭시 이동할 url
-    private fun setMainTabBarLoadUrl(url: String) {
-//        mSetBottomMenu = false
-        LogUtil.d("여기 setMainTabBarLoadUrl = "+url)
-        when (url) {
-            URL_MENU -> {
-//                mOnAllMenu = true
-                if (viewModel.mainActivityData.value!!.mBottomNavigation == SHOP_TAB || viewModel.mainActivityData.value!!.mBottomNavigation == CHATBOT_TAB) {
-                    onMainWebViewLoadUrl(URL_MENU)
-                } else {
-                    callJavaScript(binding.wbMain, "a_AllMenu.showMenu")
-                }
-            }
-            URL_BENEFIT ->{
-                onMainWebViewLoadUrl(URL_BENEFIT)
-            }
-            URL_MAIN ->{
-                onMainWebViewLoadUrl(URL_MAIN)
-            }
-            URL_SHOP -> {
-//                showBaseLoadingPopup()
-                onMainWebViewLoadUrl(URL_SHOP)
-            }
-            URL_CHATBOT ->{
-//                moveChatbot()
-            }
-        }
-    }
-
     //마이케이티앱 웹뷰로드 로직 함수
     private fun onMainWebViewLoadUrl(url : String){
         if (TextUtils.isEmpty(url)) {
@@ -209,42 +199,82 @@ class MainActivity : BaseWebViewActivity() {
     }
 
 
-    //옵저버 등록 함수
-    private fun onObserve(){
-
-        //introApiResponse 옵저버 데이터가 변경되면 반응
-        viewModel.introApiResponse.observe(this){data ->
-            LogUtil.d("여기 UI 변동사항 "+data.code)
-        }
-
-        viewModel.openLoginViewJsDto.observe(this){data ->
-            LogUtil.d("여기 UI 변동사항 $data")
-        }
-
-        viewModel.mainActivityData.observe(this){data ->
-            LogUtil.d("여기 Main Util 데이터 변동사항 data $data")
-
-            //하단탭바 감추기 여부
-            if (!data.url.contains(URL_MENU)) {
-                if (data.url.contains(URL_MAIN) || data.url.contains(URL_BENEFIT) || data.url.contains(URL_SHOP)) {
-                    binding.mainTabBar.root.visibility = View.VISIBLE
+    //하단탭바 클릭시 이동할 url
+    private fun setMainTabBarLoadUrl(url: String) {
+//        mSetBottomMenu = false
+        LogUtil.d("여기 setMainTabBarLoadUrl = "+url)
+        when (url) {
+            URL_MENU -> {
+//                mOnAllMenu = true
+                if (viewModel.mainActivityData.value!!.mBottomNavigation == SHOP_TAB || viewModel.mainActivityData.value!!.mBottomNavigation == CHATBOT_TAB) {
+                    onMainWebViewLoadUrl(URL_MENU)
                 } else {
-                    binding.mainTabBar.root.visibility = View.GONE
+                    callJavaScript(binding.wbMain, "a_AllMenu.showMenu")
                 }
             }
-            else{
+            URL_BENEFIT ->{
+                onMainWebViewLoadUrl(URL_BENEFIT)
+            }
+            URL_MAIN ->{
+                onMainWebViewLoadUrl(URL_MAIN)
+            }
+            URL_SHOP -> {
+//                showBaseLoadingPopup()
+                onMainWebViewLoadUrl(URL_SHOP)
+            }
+            URL_CHATBOT ->{
+//                moveChatbot()
+            }
+        }
+    }
+
+    // 하단탭바 감추기 여부
+    private fun isBottomTabVisible(data : MainActivityData){
+
+        //하단탭바 감추기 여부
+        if (!data.url.contains(URL_MENU)) {
+            if (data.url.contains(URL_MAIN) || data.url.contains(URL_BENEFIT) || data.url.contains(URL_SHOP)) {
+                binding.mainTabBar.root.visibility = View.VISIBLE
+            } else {
                 binding.mainTabBar.root.visibility = View.GONE
             }
-
-            setBottomGifLoad(true, data.mainBottomPosition)
         }
+        else{
+            binding.mainTabBar.root.visibility = View.GONE
+        }
+
+        setBottomGifLoad(true, data.mainBottomPosition)
+    }
+
+    //하단탭바 관련 Position 로직 처리
+    private fun setBottomTabPosition(url : String){
+        when(url){
+            URL_MENU->{//메뉴
+                viewModel.setMainActivityData(MainActivityData(0, url, SHOP_TAB))
+            }
+            URL_BENEFIT->{//혜택
+
+                viewModel.setMainActivityData(MainActivityData(1, url, BENEFIT_TAB))
+            }
+            URL_MAIN->{//홈
+                viewModel.setMainActivityData(MainActivityData(2, url, MY_TAB))
+            }
+            URL_SHOP->{//샵
+                viewModel.setMainActivityData(MainActivityData(3, url, SHOP_TAB))
+            }
+            URL_CHATBOT ->{//챗봇
+                viewModel.setMainActivityData(MainActivityData(4, url, SHOP_TAB))
+            }
+        }
+
+        setBottomGifLoad(true, viewModel.mainActivityData.value!!.mainBottomPosition)
     }
 
     //현재 마이케이티앱 goBack 로직
     private fun goBack() {
         LogUtil.i("goBack")
-        if (DataUtils.isNotNull(binding.wbMain) && canGoBack()) {
-            val lastHistory: String = getLastHistory()
+        if (DataUtils.isNotNull(binding.wbMain) && CommonUtil.getCanGoBack(binding.wbMain.canGoBack())) {
+            val lastHistory: String = CommonUtil.getLastHistory(binding.wbMain.copyBackForwardList())
             val curUrl: String = binding.wbMain.url.toString()
             // 패밀리박스 가입단계에서 Back버튼 클릭시 가입중단 안내 팝업 노출을 위해 체크
             if (curUrl.contains(DefineUrl.URL_FAMILY_BOX_JOIN)) {
@@ -262,7 +292,7 @@ class MainActivity : BaseWebViewActivity() {
                 } else {
                     binding.wbMain.goBack()
                 }
-            } else if (checkGoBackForward(curUrl)) { // [DR-2019-25911] Android IPIN 화면 뒤로가기 오류 수정
+            } else if (CommonUtil.checkGoBackForward(curUrl)) { // [DR-2019-25911] Android IPIN 화면 뒤로가기 오류 수정
                 if (binding.wbMain.canGoBackOrForward(-2)) {
                     binding.wbMain.goBackOrForward(-2)
                 } else {
@@ -273,36 +303,5 @@ class MainActivity : BaseWebViewActivity() {
             }
         }
     }
-    fun checkGoBackForward(curUrl: String): Boolean {
-        if (TextUtils.isEmpty(curUrl)) return false
-        val urls = DefineUrl.URL_GO_BACK_FORWARD
-        for (url in urls) {
-            if (curUrl.contains(url!!)) {
-                return true
-            }
-        }
-        return false
-    }
 
-    /**
-     * getLastHistory : 마지막 페이지의 url 조회
-     */
-    fun getLastHistory(): String {
-        val list: WebBackForwardList = binding.wbMain.copyBackForwardList()
-        if (list.size <= 1) return ""
-        // 현재 인덱스
-        val idx = list.currentIndex
-        return if (idx < 1) "" else list.getItemAtIndex(idx - 1).url
-        // 인덱스로 URL 조회
-    }
-    /**
-     * canGoBack : 뒤로가기 가능여부 확인
-     */
-    fun canGoBack(): Boolean {
-        var hasBack = false
-        if (binding.wbMain != null) {
-            hasBack = binding.wbMain.canGoBack()
-        }
-        return hasBack
-    }
 }
