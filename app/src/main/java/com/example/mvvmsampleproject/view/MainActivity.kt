@@ -37,9 +37,10 @@ class MainActivity : BaseWebViewActivity() {
 
     private lateinit var binding : ActivityMainBinding
 
-    //'androidx.activity:activity-ktx:1.8.2' 라이브러리를 추가해야 사용가능 액티비티와 뷰모델의 연결을 쉽게 만들어줌
+    //MainViewModel 등록
     private val viewModel : MainViewModel by viewModels()
 
+    //신규 뒤로가기 기존 onBackPressed 는 Deprecated 되었음
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             LogUtil.d("뒤로가기")
@@ -67,19 +68,48 @@ class MainActivity : BaseWebViewActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        setStatusBarColor(R.color.white)
+    }
+
+    /**
+     * MainWebView Url 로딩 시작 시점
+     * **/
+    override fun onWebViewStart(view: WebView?, urlType: Int, url: String?) {
+        super.onWebViewStart(view, urlType, url)
+        /**
+         * 2407 인트로가 완전히 제거 되었을때만 실행
+         * 인트로가 완전히 벗겨지지 않은 상태에서 해당 로직 실행시
+         * 앱실행시 깜빡이는 현상 있음
+         */
+        showBaseLoadingPopup()
+    }
+
+    /**
+     * MainWebView Url 로딩 진행 시점
+     * **/
     override fun onWebViewProgressChanged(url: String?, newProgress: Int) {
         LogUtil.d("여기 onWebViewProgressChanged ="+url + " "+newProgress)
         if (newProgress >= 100) {
-            setBottomTabPosition(url.toString())
+            hideBaseLoadingPopup()
+            if(url != viewModel.mainActivityData.value!!.url){
+                setBottomTabData(url.toString())
+            }
         }
     }
 
+    /**
+     * MainWebView Url 로딩 완료 시점
+     * **/
     override fun onWebViewFinish(view: WebView?, url: String?) {
         super.onWebViewFinish(view, url)
         LogUtil.d("여기 onWebViewFinish ="+url)
     }
 
-    //MainActivity 셋팅
+    /**
+     * MainActivity 셋팅
+     * **/
     private fun init(){
         this.onBackPressedDispatcher.addCallback(this , onBackPressedCallback)
         viewModel.onHttpIntroApi()
@@ -108,49 +138,52 @@ class MainActivity : BaseWebViewActivity() {
 
     }
 
-    //옵저버 등록 함수
+    /**
+     * 옵저버 등록 함수 (새로운 로직)
+     * ViewModel 에 있는 LiveData의 값이 변경되었을떄 옵저버를 통해 데이터 확인 가능
+     * **/
     private fun onObserve(){
 
         //introApiResponse 옵저버 데이터가 변경되면 반응
         viewModel.introApiResponse.observe(this){data ->
-            LogUtil.d("여기 UI 변동사항 "+data.code)
+            LogUtil.d("introApiResponse observe = "+data.code)
         }
 
         viewModel.openLoginViewJsDto.observe(this){data ->
-            LogUtil.d("여기 UI 변동사항 $data")
+            LogUtil.d("openLoginViewJsDto observe = $data")
         }
 
         viewModel.mainActivityData.observe(this){data ->
-            LogUtil.d("여기 Main Util 데이터 변동사항 data $data")
+            LogUtil.d("mainActivityData observe = $data")
             //하단탭바 감추기 여부
             isBottomTabVisible(data)
+            onMainWebViewLoadUrl(data.url)
         }
     }
 
-    //하단 탭바 클릭 셋팅
+    /**
+     * 하단 탭바 클릭 로직 함수 (새로운 로직)
+     * **/
     private fun setOnBottomClick(){
         binding.mainTabBar.llMenu.setOnClickListener {
-            viewModel.setMainActivityData(MainActivityData(viewModel.mainActivityData.value!!.mainBottomPosition,URL_MENU,MENU_TAB))
-            setMainTabBarLoadUrl(URL_MENU)
+            setBottomTabData(URL_MENU)
         }
         binding.mainTabBar.llBenefit.setOnClickListener {
-            viewModel.setMainActivityData(MainActivityData(1, URL_BENEFIT, BENEFIT_TAB))
-            setMainTabBarLoadUrl(URL_BENEFIT)
+            setBottomTabData(URL_BENEFIT)
         }
         binding.mainTabBar.llHome.setOnClickListener {
-            viewModel.setMainActivityData(MainActivityData(2, URL_MAIN, MY_TAB))
-            setMainTabBarLoadUrl(URL_MAIN)
+            setBottomTabData(URL_MAIN)
         }
         binding.mainTabBar.llShop.setOnClickListener {
-            viewModel.setMainActivityData(MainActivityData(3, URL_SHOP, SHOP_TAB))
-            setMainTabBarLoadUrl(URL_SHOP)
+            setBottomTabData(URL_SHOP)
         }
         binding.mainTabBar.llChatBot.setOnClickListener {
-//            viewModel.setMainActivityData(MainActivityData(viewModel.mainActivityData.value!!.mainBottomPosition, URL_CHATBOT, CHATBOT_TAB))
-//            setMainTabBarLoadUrl(URL_CHATBOT)
         }
     }
-    //마이케이티앱 웹뷰로드 로직 함수
+
+    /**
+     * 마이케이티앱 웹뷰로드 로직 함수(기존 마이케이티앱 로직)
+     * **/
     private fun onMainWebViewLoadUrl(url : String){
         if (TextUtils.isEmpty(url)) {
             return
@@ -158,11 +191,14 @@ class MainActivity : BaseWebViewActivity() {
 //        setCookie()
         binding.wbMain.loadUrl(url)
     }
-    //하단 팝업 GIF 재생
+
+    /**
+     * 하단 팝업 GIF 재생(기존 마이케이티앱 로직)
+     * **/
     private fun setBottomGifLoad(isDark : Boolean ,position : Int){
         Glide.with(this)
             .asGif()
-            .load(viewModel.mainBottomData[position].gifNameDark)
+            .load(viewModel.mainBottomData[position].gifNameRight)
             .listener(object : RequestListener<GifDrawable>{
                 override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<GifDrawable>?, isFirstResource: Boolean): Boolean {
                     return false
@@ -191,6 +227,9 @@ class MainActivity : BaseWebViewActivity() {
         setBottomImg(position)
     }
 
+    /**
+     * 하단 탭바 활성화 된 탭 제외 나머지 탭 이미지 비활성화 (기존 마이케이티앱 로직)
+     * **/
     private fun setBottomImg(position: Int) {
         for (i in 0..4) {
             if (i != position) {
@@ -199,43 +238,18 @@ class MainActivity : BaseWebViewActivity() {
             }
         }
     }
-    //웹뷰 셋팅
+
+    /**
+     * 웹뷰 셋팅 (기존 마이케이티앱 + 신규 로직 추가)
+     * **/
     private fun setWebViewSetting(){
         setWebView(binding.wbMain , viewModel.jsBridge , true)
-        binding.wbMain.loadUrl(URL_MAIN)
+        onMainWebViewLoadUrl(viewModel.mainActivityData.value!!.url)
     }
 
-
-    //하단탭바 클릭시 이동할 url
-    private fun setMainTabBarLoadUrl(url: String) {
-//        mSetBottomMenu = false
-        LogUtil.d("여기 setMainTabBarLoadUrl = "+url)
-        when (url) {
-            URL_MENU -> {
-//                mOnAllMenu = true
-                if (viewModel.mainActivityData.value!!.mBottomNavigation == SHOP_TAB || viewModel.mainActivityData.value!!.mBottomNavigation == CHATBOT_TAB) {
-                    onMainWebViewLoadUrl(URL_MENU)
-                } else {
-                    callJavaScript(binding.wbMain, "a_AllMenu.showMenu")
-                }
-            }
-            URL_BENEFIT ->{
-                onMainWebViewLoadUrl(URL_BENEFIT)
-            }
-            URL_MAIN ->{
-                onMainWebViewLoadUrl(URL_MAIN)
-            }
-            URL_SHOP -> {
-//                showBaseLoadingPopup()
-                onMainWebViewLoadUrl(URL_SHOP)
-            }
-            URL_CHATBOT ->{
-//                moveChatbot()
-            }
-        }
-    }
-
-    // 하단탭바 감추기 여부
+    /**
+     * 하단탭바 감추기 여부 (기존 마이케이티앱 + 신규 로직 추가)
+     * **/
     private fun isBottomTabVisible(data : MainActivityData){
 
         //하단탭바 감추기 여부
@@ -249,18 +263,23 @@ class MainActivity : BaseWebViewActivity() {
         else{
             binding.mainTabBar.root.visibility = View.GONE
         }
-
-        setBottomGifLoad(true, data.mainBottomPosition)
+        if(data.mainBottomPosition != -1){
+            setBottomGifLoad(true, data.mainBottomPosition)
+        }
     }
 
-    //하단탭바 관련 Position 로직 처리
-    private fun setBottomTabPosition(url : String){
+    /**
+     * 웹뷰애 실행되는 url 데이터 처리
+     * 메뉴,혜택,홈,샵,챗봇 을 제외한 나머지 url 은 position 을 -1 로 지정한다
+     * 액티비티에서는 값을 가지고 있으면 안되고 값은 ViewModel 로 보내 LiveData 저장후
+     * LiveData 의 옵저버를 통해 값이 변경된걸 확인한다
+     * **/
+    private fun setBottomTabData(url : String){
         when(url){
             URL_MENU->{//메뉴
                 viewModel.setMainActivityData(MainActivityData(0, url, SHOP_TAB))
             }
             URL_BENEFIT->{//혜택
-
                 viewModel.setMainActivityData(MainActivityData(1, url, BENEFIT_TAB))
             }
             URL_MAIN->{//홈
@@ -272,9 +291,10 @@ class MainActivity : BaseWebViewActivity() {
             URL_CHATBOT ->{//챗봇
 //                viewModel.setMainActivityData(MainActivityData(4, url, SHOP_TAB))
             }
+            else ->{
+                viewModel.setMainActivityData(MainActivityData(-1, url, ""))
+            }
         }
-
-        setBottomGifLoad(true, viewModel.mainActivityData.value!!.mainBottomPosition)
     }
 
 

@@ -1,7 +1,20 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.MvvmSampleProject" parent="Theme.Material3.DayNight.NoActionBar">
+
+    <style name="AppThemeMain" parent="AppTheme">
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowDisablePreview">false</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/status_bg</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fitsSystemWindows">false</item>
+        <item name="android:windowContentOverlay">@null </item>                  <!-- 툴바 아래 그림자 삭제 -->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>        <!-- 상태바 투명 처리 -->
+        <item name="android:statusBarColor">@color/black</item>             <!-- 상태바 색상 변경 -->
+        <item name="android:fontFamily">@font/spoqa_regular</item>
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>

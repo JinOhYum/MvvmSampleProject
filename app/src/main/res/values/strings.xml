@@ -1,6 +1,631 @@
 <resources>
     <string name="app_name">MvvmSampleProject</string>
 
+<!--    <string name="app_name">마이 케이티</string>-->
+
+    <string name="common_accessibility">모바일 접근성 인증</string>
+    <string name="common_next">다음</string>
+    <string name="common_start">시작하기</string>
+    <string name="common_ok">확인</string>
+    <string name="common_ok_btn">확인 버튼</string>
+    <string name="common_cancel">취소</string>
+    <string name="common_cancel_btn">취소 버튼</string>
+    <string name="common_close">닫기</string>
+    <string name="common_release">해제하기</string>
+    <string name="common_apply">적용</string>
+    <string name="common_finish">App 종료</string>
+    <string name="common_finish_02">앱 종료</string>
+    <string name="common_retry">다시 시도</string>
+    <string name="common_change">변경</string>
+    <string name="common_login">로그인</string>
+    <string name="common_logout">로그아웃</string>
+    <string name="common_deny">거부</string>
+    <string name="common_permit">허용</string>
+    <string name="common_not_allow">허용안함</string>
+    <string name="common_dont_show">다시보지 않기</string>
+    <string name="common_dont_show_today">하루동안 보지 않기</string>
+    <string name="common_ssl_error">SSL 인증서 오류가 발생하였습니다.\n계속 진행 하시겠습니까?</string>
+    <string name="common_dot">ㆍ</string>
+    <string name="common_exit_app">"마이 케이티를 종료하려면 '뒤로' 버튼을 한번 더 누르세요."</string>
+    <string name="common_ocr_retry">재촬영</string>
+    <string name="common_registered">등록</string>
+    <string name="common_reset">초기화</string>
+    <string name="help">도움말</string>
+    <string name="next_select">다음에 하기</string>
+    <string name="common_info">알림</string>
+    <string name="common_error_message_1">비정상적인 접근입니다.</string>
+
+    <!-- 권한 안내 -->
+    <string name="permission_title">마이케이티 앱 이용을 위해\n다음 접근권한 허용이 필요합니다.</string>
+    <string name="required_permission_title">필수적 접근 권한</string>
+    <string name="optional_permission_title">선택적 접근 권한</string>
+    <string name="permission_info_title">접근권한 설정안내</string>
+    <string name="permission_info_contents">\'설정 > 개인정보보호\'에서 설정 하실 수 있습니다.</string>
+    <string name="permission_info_sub">선택적 접근 권한은 해당 기능 이용시 동의를 받고 있으며,\n동의하지 않아도 해당 기능 외 서비스 이용이 가능합니다.</string>
+    <string name="permission_call_title">전화</string>
+    <string name="permission_call_contents">간편조회 서비스 제공 (로밍 정보 UUID)</string>
+    <string name="permission_storege_title">저장</string>
+    <string name="permission_storege_contents">위젯 메뉴 이미지 다운로드 저장</string>
+    <string name="permission_mic_title">마이크</string>
+    <string name="permission_mic_contents">챗봇 음성검색 서비스 제공</string>
+    <string name="permission_carmera_title">카메라</string>
+    <string name="permission_carmera_contents">신분증, 신용/유심카드 스캔, QR코드</string>
+    <string name="permission_contacts_title">주소록</string>
+    <string name="permission_contacts_contents">Y박스 친구목록 확인</string>
+    <!--2406 앱접근권한 분기별 명칭변경-->
+    <string name="permission_storage_title_os_13">사진 및 동영상</string>
+    <string name="permission_contacts_title_os_12">연락처</string>
+
+    <string name="permission_over_layout">다른 앱 위에 표시</string>
+    <string name="permission_over_layout_contents">보이는 ARS 등의 화면 서비스 제공</string>
+    <!--    <string name="permission_over_layout_contents">보이는 ARS, 스미싱 지킴이 등의 화면 서비스 제공</string>-->
+
+    <string name="permission_notification_layout">알림</string>
+    <string name="permission_notification_layout_contents">이용량 PUSH 알림 등 서비스 제공</string>
+
+    <string name="over_layout_info_msg_title">보이는 ARS 등 화면 서비스 이용 안내</string>
+    <string name="over_layout_info_msg_1">114 고객센터에 전화 연결 시, 제공되는 \'보이는 ARS\'등 화면 서비스를 위하여 고객님의 정보 제공 동의가 필요합니다.</string>
+    <string name="over_layout_info_msg_2">제공된 정보는 마이케이티 포함 이외 기업에서 \'보이는 ARS\'등 화면 서비스 제공을 위하여 사용되며, 동의를 하지 않으셔도 앱의 기본 기능을 사용하는 데는 제약이 없습니다.</string>
+    <string name="over_layout_info_msg_3">이용 동의 시 KT 고객센터의 \'보이는 ARS\'등 화면 서비스 이용이 가능합니다.</string>
+    <string name="over_layout_info_msg_4">권한 설정 변경 방법 : 디바이스 설정 > 애플리케이션 > 마이 케이티 > 다른 앱 위에 표시 > 권한 허용 ON/OFF</string>
+    <string name="over_layout_info_msg_5">3G, 5G, LTE 환경에서 화면 서비스 이용 시 통화료 외에 데이터 요금이 발생할 수 있습니다.</string>
+    <string name="over_layout_info_msg_6">※ 3G, 5G, LTE 환경에서 화면 서비스 이용 시 통화료 외에 데이터 요금이 발생할 수 있습니다.</string>
+
+
+    <string name="permission_accessibility_layout">접근성</string>
+    <string name="permission_accessibility_layout_contents">불법 웹사이트 차단 등 스미싱 지킴이 제공</string>
+
+    <string name="permission_battery_optimization_layout">제한없는 배터리 사용</string>
+    <string name="permission_battery_optimization_layout_contents">중단없는 스미싱 판별 등 스미싱 지킴이 제공</string>
+
+
+    <!-- 챗봇 권한 안내 -->
+    <!-- OCR 권한 안내 -->
+    <!-- [DR-2019-18500] 납부 페이지 OCR 적용 -->
+    <!--<string name="perm_ocr_item01_desc">유심개통 시 신분증, 신용/유심카드 스캔</string>-->
+
+    <!-- 음성인식 -->
+
+    <!-- 1회용 비밀번호 -->
+    <string name="otp_title">1회용 비밀번호</string>
+    <string name="otp_remain_second" formatted="false">"유효시간 : %02d초"</string>
+    <string name="otp_desc01">kt.com에 접속하여 ID와 1회용 비밀번호로 편리하고 안전하게 로그인 할 수 있습니다.</string>
+    <string name="otp_desc02">개인고객 KT 아이디로 로그인 하셔야 서비스 이용이 가능합니다.</string>
+
+    <!-- 초기 설정 -->
+    <string name="setting_init_title">설정 초기화 안내</string>
+    <string name="setting_init_desc">App을 업데이트하여 고객님의 정보 보호를 위해 아래와 같이 설정을 초기화합니다.\n원하시는 설정 변경 후 확인 버튼을 선택해주세요.</string>
+    <string name="setting_init_app_ctn">대표번호 설정</string>
+    <string name="setting_init_push_agree">모두 동의 하시면 KT 요금할인, 제휴상품 할인/이벤트 등 다양한 고객 맞춤 혜택 정보를 받으실 수 있습니다.</string>
+    <string name="setting_init_pop_push_error_desc">모두 %s하기 진행 중 일시적인 문제로 %s 되지 않은 항목이 있을 수 있습니다. \'설정\' 화면에서 확인 또는 재시도해주세요.</string>
+    <string name="setting_init_pop_push_error_submsg">※ 모두 %s하기 진행 중 일시적인 문제로 %s 되지 않은 항목이 있을 수 있습니다. \'설정\' 화면에서 확인 또는 재시도해주세요.</string>
+    <!-- 설정 -->
+    <string name="setting_title">설정</string>
+    <!-- 로그인 -->
+    <string name="setting_login_info">로그인 정보</string>
+    <string name="setting_login_app_ctn">App 사용번호</string>
+    <string name="setting_login_sns_id">SNS ID 관리</string>
+    <string name="setting_login_change_pw">비밀번호 변경</string>
+    <string name="setting_login_gen_otp">1회용 비밀번호 받기</string>
+    <!-- 홈 -->
+    <string name="setting_home">홈</string>
+    <!-- [DR-2019-44383] CTQ 용어 개선 -->
+    <!--<string name="setting_home_set_card">카드 메뉴 편집</string>-->
+    <string name="setting_home_big_font">큰 글자로 보기</string>
+    <!-- 위젯 -->
+    <string name="setting_widget">위젯</string>
+    <string name="setting_widget_ctn">위젯 조회 번호</string>
+    <string name="setting_call_type">음성/기타 통화 선택</string>
+    <string name="setting_widget_style">위젯 스타일 설정</string>
+    <!-- 빅폰트 -->
+    <string name="setting_big_font">글자 크기 설정</string>
+    <string name="big_font_text"><u>가</u></string>
+    <!-- 상단바 -->
+    <string name="setting_notify_bar">상단바 조회</string>
+    <string name="setting_notify_bar_yn">상단바 이용량 조회</string>
+    <string name="setting_notify_bar_ctn">상단바 조회 번호</string>
+    <string name="setting_notify_bar_style">상단바 배경색 선택</string>
+    <string name="setting_notify_bar_color_default">기본색</string>
+    <string name="setting_notify_bar_color_white">흰색</string>
+    <string name="setting_notify_bar_color_black">검은색</string>
+    <!-- 알림센터 -->
+    <string name="setting_push">PUSH/혜택 알림 설정</string>
+    <string name="setting_push_all_yn">모두 동의하기 (모두 선택 항목)</string>
+    <string name="setting_push_usage_yn">모바일 이용량 알림</string>
+    <string name="setting_push_usage_day">수신 날짜 주기</string>
+    <string name="setting_push_usage_ctn">이용량 알림 번호</string>
+    <string name="setting_push_alarm_yn">(선택) PUSH 알림 수신</string>
+    <string name="setting_person_info_yn">(선택) 개인정보 수집/이용동의</string>
+    <string name="setting_ad_info_yn">(선택) 광고성 정보 수신동의/처리위탁</string>
+    <string name="setting_push_shop_yn">(선택) 출석 체크 알림 수신</string>
+    <string name="setting_detail">상세보기</string>
+    <string name="setting_terms_conditions">이용약관 상세보기</string>
+
+
+    <!-- [DR-2020-미등록] 마이케이티앱 웹접근성 개선 -->
+    <!--[DR-2021-06273] 마이케이티앱 웹접근성 추가 개선-->
+    <!-- [DR-2020-미등록] 마이케이티앱 웹접근성 개선 -->
+    <!--[DR-2021-06273] 마이케이티앱 웹접근성 추가 개선-->
+
+    <!-- 정보 -->
+    <string name="setting_info">정보</string>
+    <string name="setting_info_pin_lock_yn">암호잠금</string>
+    <string name="setting_info_change_pin_lock">암호잠금 변경</string>
+    <string name="setting_info_pin_lock_sub_text">서로 다른 3자리 숫자 또는 연속되지 않는 숫자를 사용해주세요.</string>
+
+    <!-- 멤버십 바코드 쉐이크 -->
+    <!-- [DR-2019-44383] CTQ 용어 개선 -->
+    <!--<string name="setting_shake_barcode">멤버십 쉐이크</string>-->
+    <!--<string name="shake_barcode_tooltip">멤버십 쉐이크 란?</string>-->
+    <string name="shake_barcode_user_name">%s님 멤버십</string>
+    <string name="setting_shake_barcode">휴대폰을 흔들면 멤버십 바코드가 열려요</string>
+    <string name="shake_barcode_tooltip">흔들어서 멤버십 바코드 열기</string>
+    <!--[DR-2021-06273] 마이케이티앱 웹접근성 추가 개선-->
+    <string name="shake_barcode_tooltip_guide">마이 케이티 이용 중 폰을 흔들면 멤버십 바코드를\n호출할 수 있는 기능입니다.</string>
+    <!-- [DR-2019-52393] 마이케이티앱 내 비즈멤버십 회선 서비스 제공 -->
+    <string name="shake_barcode_corp_guide">멤버십 쉐이크 기능은 개인회선에서만 제공하여, 개인회선 멤버십 화면으로 이동합니다.</string>
+
+    <!-- 보이는 ARS -->
+    <!-- [DR-2019-52397] 콜라보 ARS ON/OFF 기능 개발 -->
+    <string name="setting_callavo_ars_before">누르는 ARS 사용</string>
+    <string name="setting_callavo_ars">보이는 ARS 등 화면 서비스 사용</string>
+    <string name="callavo_ars_tooltip">보이는 ARS 등 화면 서비스 안내</string>
+    <string name="callavo_ars_tooltip_guide">KT 고객센터 \'보이는 ARS\' 등 화면 서비스를 이용하실때 스마트폰 화면을 보며 쉽고 편리하게 원하는 메뉴를 선택할 수 있는 서비스 입니다.</string>
+
+    <!-- 스미싱 지킴이 -->
+    <string name="safe_sdk_title">스미싱 지킴이 사용</string>
+    <string name="safe_sdk_info">스미싱 지킴이 안내</string>
+
+    <string name="safe_sdk_setting_info_msg_1">문자 또는 카카오톡 메시지 내 URL 링크 클릭 시 스미싱 URL 차단 및 주의 여부를 안내해주는 서비스(㈜플랜티넷 제공)입니다.</string>
+    <string name="safe_sdk_setting_info_msg_2">※ 서비스 이용동의 및 권한 설정 후 별도 앱 설치 없이 서비스 이용 가능합니다.</string>
+    <string name="safe_sdk_setting_info_msg_3">※ 본 서비스는 배터리 사용량에 영향을 줄 수 있습니다.</string>
+
+    <string name="safe_sdk_setting_popup_title">생체인증 로그인 사용 설정</string>
+    <string name="safe_sdk_setting_popup_msg_1">‘마이케이티앱 생체인증 로그인’ 사용을 해제하시겠습니까?</string>
+    <string name="safe_sdk_setting_popup_msg_2">※ ‘마이케이티앱 생체인증  로그인’ 사용 여부를 설정하는 메뉴 입니다.</string>
+    <string name="safe_sdk_setting_popup_msg_3">※ 생체인증 정보를 삭제하려면 휴대폰 단말 내  설정 메뉴를 이용해주세요.</string>
+
+
+    <string name="safe_sdk_popup_titel">작업공지안내</string>
+    <string name="safe_sdk_popup_msg_1">안정적인 서비스 제공을 위해 ‘스미싱 지킴이’ 시스템 점검 작업이 진행됩니다.</string>
+    <string name="safe_sdk_popup_msg_2">보다 나은 고객서비스를 위해 최선을 다하는 마이케이티앱이 되겠습니다.</string>
+
+
+    <!-- 화면 -->
+    <string name="darkmode">화면</string>
+    <string name="setting_darkmode">다크 모드 설정</string>
+    <string name="setting_darkmode_off">꺼짐</string>
+    <string name="setting_darkmode_on">켜짐</string>
+    <string name="setting_darkmode_system">시스템 설정 사용</string>
+
+    <!-- 고객지원 -->
+    <string name="setting_support">고객지원</string>
+    <!-- [DR-2018-45728] 마이 케이티 앱 FAQ -->
+    <string name="setting_support_faq">마이 케이티 앱 FAQ</string>
+    <string name="setting_support_license">오픈소스 라이선스</string>
+    <string name="setting_support_version">버전 정보</string>
+
+    <!-- 버전 정보 -->
+    <string name="cur_version">현재 버전</string>
+    <string name="last_version">최신 버전</string>
+    <string name="version_info">버전정보</string>
+    <string name="latest_version_desc">현재 최신버전입니다.</string>
+    <string name="app_update">업데이트</string>
+
+    <!-- 설정 업데이트 팝업 -->
+    <string name="pop_set_update_title">업데이트 안내</string>
+    <string name="pop_set_basics_update_title">App 업데이트 안내</string>
+    <string name="app_finish">앱종료</string>
+    <string name="finish">종료</string>
+
+    <string name="pop_set_basics_update_message_1">최신버전으로 업데이트 해주세요.</string>
+    <string name="pop_set_basics_update_message_2">[주요 업데이트 내역]</string>
+    <string name="pop_set_basics_update_message_3">앱 성능과 안정성이 더욱 향상되었습니다. \n최신 버전의 마이케이티로 업데이트 하시고 다양한 혜택 및 상품 소식까지 한번에 확인하세요.</string>
+
+    <string name="pop_set_update_message_1">마이케이티 앱이</string>
+    <string name="pop_set_update_message_2">새로운 버전으로 출시되었습니다.</string>
+    <string name="pop_set_update_message_3">고객님들의 의견을 반영하여,\n보다 빠른 속도와 편리한 사용성을 제공합니다.\n지금 바로 업데이트하고 이용해보세요.</string>
+
+
+    <!--<string name="pop_set_update_title">버전 업데이트 안내</string>-->
+    <!--<string name="pop_set_update_desc">고객님의 소중한 의견을 반영하여,\n마이 케이티 앱이 업데이트 되었습니다.\n업데이트 이후 편리하게 이용하세요.</string>-->
+
+    <!-- 암호 잠금 -->
+    <string name="setting_lock_description">비밀번호 4자리 입력</string>
+    <string name="password_input_title">암호 입력</string>
+    <string name="password_repeat_title">암호 재입력</string>
+    <string name="password_input_desc">암호를 입력해 주세요.</string>
+    <string name="password_repeat_desc">확인을 위해서 다시 암호를 입력해 주세요.</string>
+    <string name="password_miss_matching_desc">암호가 일치하지 않습니다.\n다시 입력해주세요.</string>
+    <string name="password_setting_miss_matching_desc">처음 입력한 암호화 일치하지 않습니다.\n다시 입력해주세요.</string>
+
+    <string name="password_input_pattern_fail">패턴 불일치</string>
+    <string name="password_input_pattern_fail_desc">연속되지 않는 3자리 숫자를 사용해주세요.</string>
+    <string name="password_input_pattern_fail_temp">서로 다른 3자리 숫자를 사용해주세요.</string>
+
+
+    <!--<string name="password_miss_matching_desc">암호가 일치하지 않습니다.\n5회 실패 시 10분간 잠금상태로 유지됩니다.</string>-->
+    <string name="password_change_desc">변경하실 암호를 입력해 주세요.\n서로 다른 3자리 숫자 또는 연속되지 않는 숫자를 사용해주세요.</string>
+    <string name="password_change_repeat_desc">확인을 위해서 변경하실 암호를 다시 입력해 주세요.</string>
+    <string name="password_lock_block_msg">5회 잘못된 암호를 입력하여\n10분간 잠금상태로 유지됩니다.</string>
+
+    <!-- 멤버십 바코드 확대보기 -->
+    <string name="membership_grade_fmt" formatted="false">"%s 등급"</string>
+    <string name="membership_not_login">로그인 후 이용해 주세요.</string>
+    <string name="membership_not_reg">KT멤버십 미가입자입니다.</string>
+    <string name="membership_not_reg_content">KT 멤버십 가입 후 멤버십 이용이 가능합니다.</string>
+    <string name="membership_reg">멤버십 가입하기</string>
+    <string name="action_login">로그인 하기</string>
+    <string name="card_reg">모바일 카드 등록 후 이용해주세요</string>
+
+    <string name="noti_not_login">마이 케이티 App 로그인 후\n이용량 정보/명세서 조회가 가능합니다.</string>
+    <string name="noti_power_save">절전 모드 해제 후 다시 시도해 주세요.</string>
+    <string name="noti_power_button">절전 모드 해제하기</string>
+
+    <!-- [DR-2019-28608] [VOC개선] 상단바/위젯 데이터 절약모드 해제버튼 개선 -->
+    <string name="noti_data_button">데이터 세이버 해제하기</string>
+    <string name="noti_data_save">데이터 세이버(절약 모드) 해제 후 이용해주세요.</string>
+    <string name="noti_network_error">데이터 설정 확인 후 다시 시도해 주세요.</string>
+    <string name="noti_server_error">서버와 통신할 수 없습니다.\n잠시 후 다시 시도해주세요.</string>
+    <string name="noti_refresh_limit">새로고침은 2시간동안 20회로 제한하고 있습니다.\n잠시 후 다시 이용해 주세요.</string>
+    <string name="noti_under_const">시스템 점검 중입니다.\n불편을 드려 죄송합니다.</string>
+    <string name="noti_empty_ctn_normal">사용량 조회는 모바일 상품을 사용중인\nkt.com 회원만 이용하실 수 있습니다.</string>
+    <string name="noti_title_data">데이터</string>
+    <string name="noti_title_used">사용</string>
+    <string name="noti_title_call">통화</string>
+    <string name="noti_title_sms">문자</string>
+    <string name="noti_title_data_remain">데이터 잔여</string>
+    <string name="noti_title_common">공통</string>
+    <string name="noti_title_egg_unit">알</string>
+    <string name="noti_title_membership">멤버십</string>
+
+    <string name="widget_title_data">데이터</string>
+    <string name="widget_title_call">통화</string>
+    <string name="widget_title_call_voc">음성</string>
+    <string name="widget_title_call_vdo">영상</string>
+    <string name="widget_title_call_slim_voc">음성 이용량</string>
+    <string name="widget_title_call_slim_vdo">영상 이용량</string>
+    <string name="widget_title_sms">문자</string>
+    <string name="widget_title_data_remain">데이터 잔여</string>
+    <string name="widget_title_common">공통</string>
+    <string name="widget_title_egg_unit">알</string>
+    <string name="widget_title_data_used">데이터 이용량</string>
+    <string name="widget_title_call_used">통화 이용량</string>
+    <string name="widget_title_sms_used">문자 이용량</string>
+    <!-- [DR-2019-63684] android 위젯 가독성 개선 -->
+    <string name="widget_title_data_charge">충전하기</string>
+    <string name="widget_not_login">로그인 후 이용해 주세요.</string>
+    <string name="widget_network_error">데이터 설정 확인 후 다시 시도해 주세요.</string>
+    <string name="widget_server_error">서버와 통신할 수 없습니다.\n잠시 후 다시 시도해주세요.</string>
+    <string name="widget_power_button">절전 모드 해제하기</string>
+    <string name="widget_power_save">절전 모드 해제 후 다시 시도해 주세요.</string>
+    <!-- [DR-2019-28608] [VOC개선] 상단바/위젯 데이터 절약모드 해제버튼 개선 -->
+    <string name="widget_data_button">데이터 세이버 해제하기</string>
+    <string name="widget_data_save">데이터 세이버(절약 모드) 해제 후 이용해주세요.</string>
+    <string name="widget_data_save_3x1">데이터 세이버 해제 후 이용해주세요.</string>
+    <string name="widget_inquery_button">요금조회</string>
+    <string name="widget_member_button">가입정보</string>
+    <string name="widget_data_charge">데이터 충전</string>
+    <string name="widget_data_bill">명세서 조회</string>
+    <string name="widget_benefit">나만의 혜택</string>
+    <string name="widget_kt_lens">KT렌즈</string>
+    <string name="widget_kt_all_service">KT전체앱서비스</string>
+    <string name="widget_kt_banner">위젯배너</string>
+    <!-- [DR-2019-63684] android 위젯 가독성 개선 -->
+    <string name="widget_faq_button">FAQ</string>
+    <string name="widget_under_const">시스템 점검 중입니다.</string>
+    <string name="widget_refresh_limit">새로고침은 2시간동안 20회로 제한하고 있습니다.\n잠시 후 다시 이용해 주세요.</string>
+    <string name="widget_refresh_limit_short">새로고침 횟수를 초과 하셨습니다.</string>
+    <string name="widget_empty_ctn">모바일 상품이 없습니다.|사용량 조회는 모바일 상품을 사용중인\nkt.com 회원만 이용하실 수 있습니다.</string>
+    <string name="widget_egg_byte_fmt" formatted="false">"(%s MB)"</string>
+    <string name="widget_name_11">마이 케이티 1x1</string>
+    <string name="widget_name_11data">마이 케이티 1x1 데이터형</string>
+    <string name="widget_name_31">마이 케이티 3x1</string>
+    <string name="widget_name_41">마이 케이티 4x1</string>
+    <string name="widget_name_42">마이 케이티 4x2</string>
+    <string name="widget_name_42time">마이 케이티 4x2 시계형</string>
+    <string name="widget_size_not_correct">단말기 제조사에 따라 설정한 위젯 사이즈와\n 다르게 표시될 수 있습니다.</string>
+
+    <!-- 팝업 공통 -->
+    <string name="common_pop_title">알림</string>
+    <string name="common_pop_sorry">고객님, 죄송합니다.</string>
+    <string name="common_pop_info">안내드립니다.</string>
+    <string name="common_pop_unavailable_service">이용할 수 없는 서비스입니다.</string>
+    <string name="common_pop_unavailable_audio">다른 앱에서 마이크를 사용하고 있습니다.\n챗봇 음성검색을 사용하시려면 마이크를 사용 중인 다른 앱을 종료해주세요.</string>
+
+    <string name="pop_push_ad_on_title">PUSH 알림 수신 동의</string>
+    <string name="pop_push_ad_off_title">PUSH 알림 수신 해제</string>
+    <!-- [DR-2023-63010] 설정초기화 이후의 마케팅 팝업에서 동의/거부시 확인 팝업 노출 추가 -->
+    <!--
+    <string name="pop_push_ad_on_desc">전송자 : (주)케이티\n마케팅 정보 수신 설정되었습니다.</string>
+    <string name="pop_push_ad_off_desc">전송자 : (주)케이티\n마케팅 정보 수신 해제되었습니다.</string>
+    <string name="pop_push_ad_on_day" formatted="false">"%04d년 %02d월 %02d일 설정 완료"</string>
+    <string name="pop_push_ad_off_day" formatted="false">"%04d년 %02d월 %02d일 해제 완료"</string>
+    -->
+    <string name="pop_otp_title">편리하고 안전한 1회용 비밀번호 안내</string>
+    <string name="pop_otp_desc01">마이 케이티에서 생성된 1회용 비밀번호로 편리하고 안전하게 kt.com에 로그인 할 수 있습니다.</string>
+    <string name="pop_otp_desc02">* 개인고객 KT 아이디로 로그인시 이용 가능합니다.</string>
+    <string name="pop_otp_info">1회용 비밀번호 안내</string>
+    <string name="pop_push_ad_kt">(주)케이티</string>
+    <string name="pop_push_ad_off_day" formatted="false">"%04d년 %02d월 %02d일\nPUSH 알림 미 수신 처리되었습니다."</string>
+    <string name="pop_push_ad_off_desc">※ 실제 PUSH 알림 미 수신까지는\n1~2일 정도 소요될 수 있습니다.</string>
+    <string name="pop_push_ad_on_day2">(주)케이티\n%s\nPUSH 알림 수신 처리되었습니다.</string>
+    <string name="pop_push_ad_off_day2">(주)케이티\n%s\nPUSH 알림 미 수신 처리되었습니다.</string>
+    <string name="pop_push_ad_on_day3">PUSH 알림 수신 처리되었습니다.</string>
+    <string name="pop_push_ad_off_day3">PUSH 알림 미 수신 처리되었습니다.</string>
+    <string name="pop_push_ad_on_span">수신</string>
+    <string name="pop_push_ad_off_span">미</string>
+    <string name="setting_bio_login_title">생체인증 로그인 사용</string>
+    <string name="setting_bio_login_msg_1">휴대폰에 본인의 생체 정보로 등록되어 있는지 꼭 확인해주세요.</string>
+    <string name="setting_bio_login_msg_2">본인 명의 휴대폰이 아닐 경우 생체인증 로그인을 사용 할 수 없어요.</string>
+
+    <string name="pop_debugging_error">디버깅 모드에서는 마이 케이티를 이용하실 수 없습니다.\n디버깅 모드 해제 후 다시 시도해주세요.</string>
+    <string name="pop_rooting_error">루팅된 단말기에서는 마이 케이티를 사용하실 수 없습니다.</string>
+    <string name="pop_deviceid_error">해당 단말기에서는 서비스 이용이 어렵습니다.\nkt.com 홈페이지에서 이용해 주세요.</string>
+    <string name="pop_login_title">로그인 후 이용 가능합니다.</string>
+    <string name="pop_login_desc">확인 선택 시 로그인 페이지로 이동합니다.</string>
+    <string name="pop_logout_title">로그아웃 하시겠습니까?</string>
+    <string name="pop_simple_logout_desc">설정된 간편 로그인 아이디는 유지됩니다. 간편로그인 삭제를 체크하시면 간편로그인 정보를 삭제할 수 있습니다.</string>
+    <string name="pop_simple_logout_id_fmt" formatted="false">"간편로그인(%s) 삭제"</string>
+    <string name="pop_finish_app">앱을 종료 하시겠습니까?</string>
+    <!-- [DR-2020-미등록] 자동로그인 재시도 개선 -->
+    <string name="pop_auto_login_limit_finish_app">안정적인 서비스를 위해 로그인 재시도 횟수를 5분 20회로 제한하고 있습니다.\n잠시 후 이용해주시기 바랍니다.</string>
+    <!-- [2019-07-18 : hangoo] 6.2.3 버전 -->
+    <string name="pop_sys_error">시스템 장애로 로그인 실패하였습니다.\n앱을 다시 실행해 주십시오.</string>
+    <!-- 데이터 과금 안내 팝업 -->
+    <!-- 간편조회 동의 팝업 -->
+    <string name="pop_simple_search_title">간편조회 이용동의</string>
+    <string name="pop_simple_search_info_title">[간편조회란]</string>
+    <!-- 권한 혀용 팝업 -->
+    <string name="pop_perm_deny_title">권한 미승인 안내</string>
+    <string name="pop_perm_rationale_desc">필수 권한 중 승인되지 않은 항목이 있습니다.\n권한을 다시 설정하시겠습니까?</string>
+    <string name="pop_perm_deny_setting_desc">필수 권한 중 승인되지 않은 항목이 있습니다.\n단말의 \'마이 케이티>권한\'에서 권한을 다시 설정하시겠습니까?</string>
+    <string name="pop_optional_perm_rationale_desc">접근 권한 중 승인되지 않은 항목이 있습니다.\n권한을 다시 설정하시겠습니까?</string>
+    <string name="pop_optional_perm_deny_setting_desc">접근 권한 중 승인되지 않은 항목이 있습니다.\n단말의 \'마이 케이티>권한\'에서 권한을 다시 설정하시겠습니까?</string>
+    <string name="pop_perm_deny_setting_comment">* 접근 권한 메뉴 선택 후 권한을 승인해주세요</string>
+    <string name="pop_perm_change_setting_desc">필수 권한 중 승인되지 않은 항목이 있습니다.</string>
+
+    <!-- [DR-2018-58281] 업데이트 팝업 구름이미지 및 문구 수정, 하루 동안 보지 않기 추가 -->
+    <!-- 업데이트 팝업 -->
+    <!--<string name="pop_update_desc">고객님의 소중한 의견을 반영하여,\n마이 케이티 앱이 업데이트 되었습니다.\n업데이트 이후 편리하게 이용하세요.</string>-->
+    <!-- 필수 업데이트 -->
+    <!--<string name="pop_update_force_desc">최신버전으로 업데이트 한 이후에\nApp을 사용하실 수 있습니다.</string>-->
+    <!-- 로밍 팝업 -->
+    <string name="pop_roaming_title">로밍 안내</string>
+    <!-- [DR-2019-19781] 로밍 팝업 문구 변경 요청 -->
+    <!--<string name="pop_roaming_desc">대한민국 이외의 지역에서 3G/LTE 네트워크를 사용중입니다. 해외에서 마이 케이티 앱 사용시, 별도의 데이터 로밍 요금이 청구됩니다.\n과다요금청구 방지를 위해 해외에서는 Wi-Fi 네트워크 사용을 권장합니다.</string>-->
+    <string name="pop_roaming_desc">대한민국 이외의 지역에서 LTE/3G 네트워크를 사용중입니다. 해외에서 KT휴대폰으로 마이 케이티 앱 접속 시, 로밍 메뉴는 무료로 이용 가능합니다.\n그 외 페이지는 별도의 데이터 로밍 요금이 부과될 수 있습니다.</string>
+    <string name="pop_roaming_data_lock">데이타 로밍이 차단되어 있습니다.\n데이타 로밍 차단 해제후 이용하십시오.</string>
+    <!-- 마케팅 정보 수신 동의 팝업 -->
+    <string name="pop_marketing_title">PUSH 알림 수신</string>
+    <string name="pop_marketing_desc01">마이케이티 앱에서 보내드리는 마케팅 정보를 푸시 메시지로 수신하시겠습니까?</string>
+    <string name="pop_marketing_desc02">* 푸시설정은 설정>알림센터>PUSH알림수신에서 변경할 수 있습니다.</string>
+    <string name="pop_marketing_agree">수신</string>
+    <string name="pop_marketing_disagree">미 수신</string>
+    <string name="pop_marketing_deny">수신동의 해제</string>
+
+    <!-- 위치정보 정보 수신 동의 팝업 -->
+    <string name="pop_location_message_2">※ 허용 시, 혜택을 알려주기 위해 앱이 닫혀 있을때나 사용되지 않을때도 위치 데이터를 수집하게 되며 광고를 제공하기 위해 사용 될 수 있습니다.</string>
+
+    <!-- 위치정보 정보 팝업 -->
+
+    <!-- 주변기기 블루트스 권한 팝업 -->
+    <string name="pop_bt_message"><font color='#00C4D8'>주변기기 연동한 고객 맞춤 광고서비스</font>를 위해 \"근처기기\" 접근에 동의하시겠습니까?</string>
+    <!--난독화 보안 에러 -->
+    <string name="obfuscation_error_title">보안에러</string>
+    <string name="find_error_stop" formatted="false">"[%s]탐지되어 종료합니다."</string>
+
+    <!-- 기타 팝업 -->
+    <string name="pop_disable_sms">접속하신 단말에서는 문자 보내기 이용이 불가능합니다.</string>
+
+    <!-- cgw 2021-07-27 광고성 정보 수신동의 팝업 수정-->
+    <string name="pop_disabled_pushad">수신동의 해제 시, KT 요금할인, 제휴상품 할인/이벤트 정보 출석체크 알림 등 고객 맞춤 혜택 정보를 받으실 수 없습니다.\n광고성 정보 수신동의를 해제 하시겠습니까?</string>
+    <string name="pop_disabled_pushad_cancel">해제하기</string>
+    <string name="pop_disable_pushad_desc1">개인정보 수집/이용 및 광고성 수신 동의가 해제 처리되었습니다.</string>
+    <string name="pop_disable_pushad_desc2">개인정보 수집 수신 동의가 해제 처리되었습니다.</string>
+    <string name="pop_disable_pushad_desc3">PUSH 알림 수신, 광고성 정보 수신 및 출석 체크 알림 수신동의 해제 알림</string>
+    <string name="pop_disable_pushad_desc4">출석 알림 미 수신 처리되었습니다.</string>
+    <string name="pop_enable_pushad_content1">출석 체크 알림 수신은 PUSH 알림 수신을 동의하신 후 이용하실 수 있습니다.\nPUSH 알림 및 출석 체크 알림 수신을 동의하시겠습니까?</string>
+    <string name="pop_enable_pushad_content2">출석 체크 알림 수신은 PUSH알림 수신, (선택) 광고성 정보 수신동의/처리위탁에 동의하신 후 이용하실 수 있습니다.\nPUSH 알림 수신, 광고성 정보 수신동의/처리위탁 및 출석 체크 알림 수신을 동의하시겠습니까?</string>
+    <string name="pop_enable_pushad_content3">출석 체크 알림 수신은 PUSH알림 수신, (선택) 개인정보 수집/이용동의, (선택) 광고성 정보 수신동의/처리위탁에 모두 동의하신 후 이용하실 수 있습니다.\nPUSH 알림 수신, 개인정보 수집/이용 및 광고성 정보 수신동의/처리위탁, 출석 체크 알림 수신을 동의하시겠습니까?</string>
+    <string name="pop_enable_pushad_content4">출석 알림을 해제하시면 더 이상 출석 알림을 받으실 수 없습니다.\n출석 체크 알림 수신을 해제하시겠습니까?</string>
+    <string name="pop_enable_highlight">동의</string>
+    <string name="pop_disable_highlight">해제</string>
+
+    <!-- 설정 > 모두 동의 하기 -->
+    <string name="pop_push_on_title">%s 동의</string>
+    <string name="pop_push_on_title2">%s 동의 알림</string>
+    <string name="pop_push_off_title">%s 동의 해제 알림</string>
+    <string name="pop_push_single_off_title">%s 해제</string>
+    <string name="pop_enable_push_desc">%s 동의 처리 되었습니다.</string>
+    <string name="pop_enable_push_desc2">%s 처리 되었습니다.</string>
+    <string name="pop_disable_push_desc">%s 동의가 해제 처리 되었습니다.</string>
+    <string name="pop_disable_push_desc2">%s 해제 처리 되었습니다.</string>
+    <string name="pop_push_agree">동의</string>
+    <string name="pop_push_disagree">해제</string>
+    <string name="pop_disabled_push_all_ok">수신동의 유지</string>
+    <string name="pop_push_error_title">PUSH/혜택 알림 설정 수신 %s 알림</string>
+    <string name="pop_push_error_desc">모두 동의하기 진행 중 일시적인 문제로 %s 되지 않은 항목이 있을 수 있습니다. \'설정\' 화면에서 확인 또는 재시도해주세요.</string>
+    <string name="pop_push_error_submsg">※ 모두 동의하기 진행 중 일시적인 문제로 %s 되지 않은 항목이 있을 수 있습니다. \'설정\' 화면에서 확인 또는 재시도해주세요.</string>
+
+    <string name="setting_push_notice_item">PUSH 알림 수신</string>
+    <string name="setting_push_person_item">개인정보 수집/이용</string>
+    <string name="setting_push_ad_info_item">광고성 정보 수신</string>
+    <string name="setting_push_shop_item">출석 체크 알림 수신</string>
+    <string name="setting_push_usage_item"></string>
+
+
+
+    <!-- 단말정보 수집 이메일 -->
+
+    <!-- 간편 로그인 -->
+    <string name="simple_login_common_error">현재 간편로그인 기능을 사용하실 수 없습니다.\n간편로그인 해제 후 아이디 로그인을 해주세요.</string>
+
+    <!-- SNS 로그인 -->
+    <string name="sns_login_kakao">kakao 로그인</string>
+
+    <!-- Marshmallow에서 권한 설명을 위해 추가 -->
+    <string name="permission_cs_label">이용량정보 수신 및 표시</string>
+    <string name="permission_cs_desc">앱이 이용량 정보를 수신하고 표시 할 수 있도록 허용합니다. 이는 앱이 사용자의 상태 변경이 확인되면 변경 된 이용량 및 설정 정보를 화면에 표시하도록 허용하는 것을 의미합니다.</string>
+
+    <!-- 대체 텍스트 -->
+    <string name="acc_common_button_fmt" formatted="false">"%s 버튼"</string>
+    <string name="acc_common_change_button_fmt" formatted="false">"%s, 변경 버튼"</string>
+    <string name="acc_common_prev_page">이전 화면</string>
+    <string name="acc_common_prev_page_btn">이전화면 버튼</string>
+    <string name="acc_common_close_btn">닫기 버튼</string>
+    <string name="acc_common_confirm_btn">확인 버튼</string>
+    <string name="acc_common_menu">전체메뉴</string>
+    <string name="acc_common_home">홈으로 가기</string>
+    <string name="acc_common_smart_talk">챗봇 검색</string>
+    <string name="acc_common_loading">정보를 불러오는 중입니다.</string>
+    <!-- [DR-2019-18500] 납부 페이지 OCR 적용 -->
+    <!--<string name="acc_perm_ocr_desc">권한이 필요한 카메라 항목에 대한 표입니다.\n유심개통 시 카드번호 스캔 서비스 제공.</string>-->
+    <!-- [DR-2019-36940] 위치권한 필수 선택 변경 -->
+    <string name="acc_version_app_logo">마이 케이티 앱</string>
+    <!-- 설정 -->
+    <string name="acc_setting_login_sns_id">SNS ID 관리 버튼</string>
+    <string name="acc_setting_login_change_pw">비밀번호 변경 버튼</string>
+    <string name="acc_setting_login_gen_otp">1회용 비밀번호 받기 버튼</string>
+    <!-- [DR-2019-44383] CTQ 용어 개선 -->
+    <!--<string name="acc_setting_home_set_card">카드 메뉴 편집 버튼</string>-->
+    <!-- [DR-2019-18499] 앱 접근성 추가 수정 -->
+    <string name="acc_setting_call_type">음성/기타 통화 선택</string>
+    <!-- 다크모드 셋팅 -->
+    <string name="acc_setting_payment_auth">결제 인증방법 설정 버튼</string>
+    <!-- [DR-2018-45728] 마이 케이티 앱 FAQ -->
+    <string name="acc_setting_support_faq">마이 케이티 앱 FAQ 버튼</string>
+    <string name="acc_setting_support_license">오픈소스 라이선스 버튼</string>
+    <string name="acc_setting_support_version">Version 정보</string>
+    <string name="acc_setting_support_version_fmt" formatted="false">"v 영%s 버튼"</string>
+    <string name="acc_setting_support_version_update_fmt" formatted="false">"현재버전 : v %s, 최신버전 : v %s"</string>
+    <string name="acc_widget_logo">마이케이티 앱</string>
+    <string name="acc_widget_refresh">새로고침</string>
+    <string name="acc_widget_barcode">멤버십 바코드</string>
+    <string name="acc_widget_setting">설정</string>
+    <string name="acc_widget_loading">정보를 불러오는중입니다.</string>
+    <string name="acc_widget_exe_app">마이 케이티 앱 실행</string>
+    <string name="acc_talk_chatbot">챗봇</string>
+    <string name="acc_talk_selected">챗봇 선택됨 탭</string>
+    <string name="acc_talk_del_all">챗봇 대화 전체삭제</string>
+    <string name="acc_talk_notice">알림</string>
+    <string name="acc_talk_notice_not_selected">알림리스트 탭</string>
+    <string name="acc_talk_notice_del_all">알림 전체삭제</string>
+    <string name="acc_voice_talk_start">음성인식 시작</string>
+    <string name="acc_add_button"> 버튼</string>
+    <string name="acc_add_link"> 링크</string>
+    <string name="acc_reset_button">초기화 버튼</string>
+
+    <!-- 스마트 토크 -->
+    <string name="smart_talk">챗봇</string>
+    <string name="smart_talk_welcome">반가워요 고객님!\n무엇을 도와드릴까요?</string>
+    <string name="smart_talk_no_alarm">저장된 알림이 없습니다.</string>
+    <string name="smart_talk_no_result2">[톡(Talk) 검색 문의 예시]</string>
+    <string name="smart_talk_popup_network_error_desc1">고객님, 죄송합니다.</string>
+    <string name="smart_talk_popup_gplugin_error_desc1">일시적으로 서비스를 이용하실 수 없습니다.</string>
+    <string name="smart_talk_popup_gplugin_error_desc2">잠시 후 다시 이용해주세요..</string>
+    <string name="smart_talk_popup_loading_delete">메시지를 삭제하는 중입니다.</string>
+    <string name="smart_talk_popup_mic_not_permission">마이크 권한이 필요합니다.</string>
+    <string name="voice_talk_listen_ing">듣고 있어요.\n말씀해 주세요.</string>
+    <string name="voice_talk_search_ing">찾고있어요.</string>
+    <string name="voice_talk_fail">잘 알아듣지 못했어요.\n다시 말씀해주세요.</string>
+    <string name="voice_talk_retry_sub">하단의 마이크를 누른 후 다시 말씀해주세요.</string>
+    <string name="voice_talk_welcome">챗봇에게 간단한 단어로\n물어보세요!</string>
+    <string name="voice_talk_not_support1">"고객님께서 이용 중인 단말기는\n음성 검색 기능이 지원되지 않습니다. '확인' 버튼을 눌러\n챗봇에서 검색해보세요."</string>
+    <string name="voice_talk_not_support2">고객님께서 이용 중인 단말기는\n음성 검색 기능이 지원되지 않습니다.</string>
+    <string name="alarm_no_prev">마지막 메시지 입니다.\n알림 메시지는 최대 6개월 동안 보관됩니다.</string>
+
+    <!-- g-plugin key(개발) -->
+    <!--<string name="voice_talk_gplugin_api_key">1010|4099854f341c8462ca293010649d964f05ce6b2de2ea0d42eaa220183ae7d4ccafe779cafea197b0ce0b9f0d578b319b2c1233158c612fba6761ec183a261e82c80052c6d594cce2e88a5ad945ba13710722bf924bf9aeda483044d726ca8e3e63f611c0606a513fa926842dcadcaf83f185c7fde702f7799425a396218fbf6dc88a7120b6cd3c9fb458cc97365322bdfdfbccca1a00224b40c12d6da9ef84ff7a6727cc1fa814d24028c8b0e84ad5e7cd0373a175f3dcc5c317e52205b9fe0fd7b8b125c13cabddff2dd6860a749f77d09bc835d42c76800ef4076877bd59bb090749febdc87420936576d223973977cbc58cb573d37f4cc507e8992e1e0db21df847fc9eb13341d78d113d1512539195b0995710d77f089f0a892f545db4ca79b35e1f1ccb3f62c3edfa656856fb328757f0c1880cd3a04aba44eeb3209df19b9c7e584e3570fb15f7e6c6af405a7fdd7e705fe296b8a6f854bd4ac6cbf7b0</string>-->
+    <!-- g-plugin key(상용) -->
+    <!-- [DR-2020-24291] G-plugin 라이브러리 교체 -->
+    <!--<string name="voice_talk_gplugin_api_key">1010|4099854f341c8462ca293010649d964f05ce6b2de2ea0d42eaa220183ae7d4cc6fb988ec47802df9a64f5763449d7a1fa53f0e94d36b5bb207df73ed368817596e565a79696a8bef4321cb8fd8f8c5193db07e2014a8262c9b712b0ee7b9d80a1f91553f66866d973fafa2a7953961744478861b6c7bff39c546a681ab1e5002dbfcf9bc14347a170f795dbb88513691b21019afb69a58119b5bcf4cebc4c9d3a2910324a93c3b2233a2294772d4f518ea902426243e5eb90ba8a41feb939a4c4317c2b0125cd4101df4af7f5e4bcc3cc8fccafb8524817f85eb3844daae540f3661cb16ad91995ea419ba2a4b9a39174d11a162a5a61ee87343d69d755d38ed4395fb85e0c67397260e03c4330521a1493b89504e98b39bcef9e99cb624ab6bec650cc3cbe8df89ea22f23d5e7a835306ca70b2bec78a58baafcfd3ee5aed71ed37408556003964abbebbe0ae71c31b7180fb905e4db6bcab52ef92a16d9d7e9e33fed6d96a88e7472502f998cd0f9f</string>-->
+    <!--    <string name="voice_talk_gplugin_api_key">1010|4099854f341c8462ca293010649d964f05ce6b2de2ea0d42eaa220183ae7d4cc5dd3d7ee54e798b5a1abc168b888032fc40b836d1c382afae81cd204f53a0ddbf9c17a3866485d97fa6714ef52325903d3ebf39e744d423357da76bf36f9c5e12394522211b0ec014fb99f4a90fe70df23dc60455b8131807a805d42634dbde699af539a3b1c5c204558e6eede15afaf33445a2543af3b78783f3e84a1a83d1f176aa59b361024011ff881195739f71254dada36f86bdfc8a5de0f79a429087bcd72d8eadfdcbe852b0776dc7e8bd52cf77a963f22f170a470b2fcac97e3b720cc25ed6a19db71bcba7c611a1d453c247c9bf127524ec5f4c0783f4bbb634facdda04fed6657782fb3633a4253a1bca5ab848154505ab4ba38eb58ee411a0c7f592fec2dd1a92ccc53eed2c819d717285a407424b8fccfd0fbb3d8fd6bd58087e48473686862e5cca96b1a27a4c754005b25118f1db96daabd9c191f4382dcbe8fcc6b29f474f74f7b643322f17391f7</string>-->
+
+    <!-- ocr, barcode -->
+    <string name="scanner_title_card_scan">신용카드 스캔</string>
+    <string name="scanner_card_guide_msg">신용카드가 사각형에\n딱 맞춰지면 자동 스캔됩니다</string>
+    <string name="scanner_title_barcode_scan">유심카드 바코드 스캔</string>
+    <string name="scanner_barcode_guide_msg">유심카드 바코드가 사각형에\n딱 맞춰지면 자동 스캔됩니다</string>
+    <string name="scanner_cancel_btn">직접입력</string>
+    <!-- OCR, BARCODE 예외 처리 문구 -->
+    <string name="scanner_fail_abi">스캔 기능 미지원 단말입니다. 단말 키보드를 통해 직접 입력해주세요</string>
+    <string name="scanner_fail_perm">필수 권한 허용 후 서비스 이용이 가능합니다\n권한을 설정하시겠습니까?</string>
+    <string name="scanner_fail_lib">라이브러리 구동에 실패하였습니다</string>
+    <string name="scanner_fail_camera_open">현재 카메라 기능이 지원되지 않습니다.\n단말 키보드를 통해 직접 입력해주세요</string>
+    <string name="scanner_fail_image_recog">이미지 인식을 하지 못하였습니다.</string>
+    <string name="scanner_dialog_perm_no">설정안함</string>
+    <string name="scanner_dialog_perm_yes">권한설정</string>
+
+    <!-- 위젯 스타일 설정 -->
+    <string name="widget_setting_title">위젯 스타일 설정</string>
+
+    <!-- 위젯 배경색 -->
+    <string name="widget_bg">배경색</string>
+    <string name="widget_bg_white">흰색</string>
+    <string name="widget_bg_black">검정색</string>
+
+    <!-- 위젯 투명도 -->
+    <string name="widget_opacity">투명도</string>
+
+    <!-- 위젯 설정 탭 버튼명 -->
+    <string name="widget_config_tab_11">1x1</string>
+    <string name="widget_config_tab_11_data">1x1\n데이터</string>
+    <string name="widget_config_tab_31">3x1</string>
+    <string name="widget_config_tab_41">4x1</string>
+    <string name="widget_config_tab_42">4x2</string>
+    <string name="widget_config_tab_42_time">4x2\n시계</string>
+
+    <!-- 절전모드 -->
+    <string name="widget_save_mode">절전모드</string>
+
+    <!-- 자동 로그인 타임아웃시 문구 -->
+    <string name="auto_login_timeout">마이케이티앱이 비정상 처리되어 종료합니다.</string>
+
+    <!-- print -->
+    <string name="print_document_name">마이 케이티</string>
+    <string name="print_job_name">마이 케이티</string>
+
+    <!-- GPS -->
+
+    <!-- 위젯/상단바 새로고침 -->
+    <string name="setting_refresh_period">위젯 새로고침 주기</string>
+    <string name="setting_refresh_period_btn">위젯/상단바 새로고침 주기</string>
+    <string name="refresh_period_guide">※ 안정적인 서비스 제공을 위한 시스템 점검 작업이 진행되는 동안에는 새로고침이 제한될 수 있습니다.</string>
+    <string name="refresh_period_manually">수동</string>
+    <string name="refresh_period_12">12시간(자동)</string>
+
+    <!-- [DR-2020-66050] 제조사 요청건_새로고침 알림 메시지 추가 - 5초/120분 20회 제한 토스트 노출 -->
+    <string name="notification_alert_click_sec_5">5초 후에 새로고침을 해주세요</string>
+
+    <!-- [DR-2019-63684] android 위젯 가독성 개선 -->
+    <!-- 위젯 > 배너 링크 > 과금 안내 팝업 -->
+    <string name="widget_banner_add_fee_title">데이터 요금 발생 안내</string>
+    <string name="widget_banner_add_fee_desc">5G, LTE, 3G 네트워크 또는 해외로밍 이용시 데이터 요금이 발생할 수 있습니다.\n\n서비스를 이용하시겠습니까?</string>
+
+    <!-- Shortcuts -->
+    <string name="shortcuts_membership_label">멤버십 카드</string>
+    <string name="shortcuts_membership_long">멤버십 카드</string>
+    <string name="shortcuts_membership_disable">멤버십 카드</string>
+    <string name="shortcuts_charge_data_label">데이터 충전</string>
+    <string name="shortcuts_charge_data_long">데이터 충전</string>
+    <string name="shortcuts_charge_data_disable">데이터 충전</string>
+    <!-- [DR-2021-06274] 마이케이티앱 아이콘 클릭시 바로가기 명칭 변경 -->
+    <string name="shortcuts_chatbot_label">통합 검색</string>
+    <string name="shortcuts_chatbot_long">통합 검색</string>
+    <string name="shortcuts_chatbot_disable">통합 검색</string>
+    <string name="shortcuts_ktshop_label">Shop 혜택 받기</string>
+    <string name="shortcuts_ktshop_long">Shop 혜택 받기</string>
+    <string name="shortcuts_ktshop_disable">Shop 혜택 받기</string>
+    <string name="shortcuts">바로가기</string>
+
+    <!-- [DR-2020-55103] Android Q Deprecated 대응 -->
+    <string name="mykt_notification_group_id">KT_CS_GROUP_ID</string>
+    <string name="mykt_notification_group_name">마이 케이티</string>
+    <string name="mykt_notification_channel_id">KT_CS_CHANNEL_ID</string>
+    <string name="mykt_notification_channel_name">마이 케이티</string>
+
+    <!-- 메인 탭바 -->
     <string name="main_tabbar_menu_title">메뉴</string>
     <string name="main_tabbar_benefits_title">혜택</string>
     <string name="main_tabbar_my_title">마이</string>
@@ -13,4 +638,264 @@
     <string name="main_tabbar_my_title_cd">마이 버튼</string>
     <string name="main_tabbar_shop_cd">샵 버튼</string>
     <string name="main_tabbar_chatbot_cd">챗봇 버튼</string>
+
+    <!-- 심플 튜토리얼 -->
+    <string name="simple_tutorial_title">이용방법</string>
+    <string name="simple_tutorial_step_1_01">SIMPLE</string>
+    <string name="simple_tutorial_step_1_02">내 손안의 작은 여유</string>
+    <string name="simple_tutorial_step_1_03">통신 생활 속에서 어렵고 복잡한 \n업무를 쉽고 간단하게 처리할 수 있도록 \n도와드리는 서비스입니다.</string>
+    <string name="simple_tutorial_step_2_01">어떻게\n사용하나요?</string>
+    <string name="simple_tutorial_step_2_02">홈버튼에서 심플 아이콘 터치</string>
+    <string name="simple_tutorial_step_2_03">하단 메뉴에서 사용할 서비스를 선택</string>
+    <string name="simple_tutorial_step_2_04">각 서비스에 맞춰 활성화 되는\n상단 영역 활용</string>
+    <string name="simple_tutorial_step_3_01">어떤 서비스가\n지원되나요?</string>
+    <string name="simple_tutorial_step_3_02">(향후 지속적으로 업데이트가 될 예정입니다.)</string>
+    <string name="simple_tutorial_step_3_03">간편WiFi 연결</string>
+    <string name="simple_tutorial_step_3_04">공유기 밑면을 스캔하세요. Wi-Fi 를\n자동으로 연결, 또는 설정을\n도와드립니다.</string>
+    <string name="simple_tutorial_step_3_05">간편지로스캔</string>
+    <string name="simple_tutorial_step_3_06">지로용지를 스캔하세요.\n요금제 부터 부가서비스 정보를\n확인할 수 있습니다.</string>
+    <string name="simple_tutorial_step_3_07">간편QR코드</string>
+    <string name="simple_tutorial_step_3_08">우리매장핫딜 QR코드를 스캔하여\n할인이벤트와 특가 상품 등 다양한\n서비스를 확인할 수 있습니다.</string>
+    <string name="simple_tutorial_step_3_09">간편 고장진단</string>
+    <string name="simple_tutorial_step_3_10">홈상품(tv, 인터넷, 인터넷전화)을\n사용하신다면, 간편하게 고장진단을\n할 수 있습니다.</string>
+    <string name="simple_tutorial_step_3_11">KT 렌즈</string>
+
+    <!-- KT 렌즈 -->
+    <string name="kt_lens">KT렌즈</string>
+    <string name="y_box_info">KT렌즈 도움말</string>
+    <string name="kt_lens_tooltip_title01">내손안의 작은여유</string>
+    <string name="kt_lens_tooltip_title02">KT렌즈로 QR코드를 촬영하여\n혜택을 확인해보세요</string>
+    <string name="kt_lens_tooltip_title03">* 해당 기능은 웹페이지에서 제공하며\n QR코드 촬영 결과 확인 시, 모바일 페이지로\n 이동되어 데이터 요금이 발생할 수 있습니다.</string>
+
+
+    <!-- 심플 QR코드 스캔 -->
+    <string name="simple_qr_scan_03">QR코드</string>
+    <string name="simple_qr_scan_04">KT에서 제공하는 핫딜 혜택이 궁금하세요?</string>
+    <string name="simple_qr_scan_05">KT매장에 있는 우리매장 핫딜 QR코드를\n스캔하여 할인이벤트와 특가상품을 확인하세요!</string>
+    <string name="page_not_found_title">원하시는 페이지를\n찾을 수 없습니다</string>
+    <string name="page_not_found_contents">서비스 이용에 불편을 드려 죄송합니다\n\n코드가 잘못 입력되었거나 서비스가\n변경되어 원하시는 페이지를 찾을 수 없습니다.\n\n사용하신 코드가 정확한지 다시 한 번 확인 후,\n이용해 주세요.</string>
+    <string name="page_not_found_btn">돌아가기</string>
+
+    <!-- 연락처 -->
+
+    <!-- 온보딩 -->
+    <string name="onboarding_title_01">나와 관련된 정보확인은\n스위치바에서 마이를!</string>
+    <string name="onboarding_title_02">다양한 혜택을 확인하려면\n스위치바에서 혜택을!</string>
+    <string name="onboarding_title_03">내게 딱 맞는 혜택이 궁금하다면\n스위치 ON!</string>
+    <string name="onboarding_title_04">데이터선물, 영화예매도\n마이케이티앱에서 한번에</string>
+    <string name="onboarding_title_05">대리점 핫딜 정보는 KT렌즈로\n셀프고장진단도 스위치로 간편하게</string>
+    <string name="onboarding_title_06">눈이 편안한 다크모드\n</string>
+    <string name="dialog_simple_search_agree">동의하기</string>
+
+    <!-- 코치마크 -->
+
+    <!-- 2022년-1월 변경 -->
+    <string name="coach_mark_page_1_msg_01">터치 한번으로 어디서든\n마이와 혜택을 이용해보세요.</string>
+
+    <!-- FIDO -->
+    <string name="fido_msg_error_common">일시적으로 접속이 지연되고 있습니다.\n잠시 후 다시 시도하여 주시기 바랍니다.\n사용에 불편을 드려 대단히 죄송합니다.</string>
+    <string name="fido_msg_error_0005">지원하지 않는 OS 버전입니다. 확인 후 다시 시도해 주세요.</string>
+    <string name="fido_msg_error_0006">FIDO 등록이 되어었지 않습니다. 등록 후 인증을 수행해 주세요.</string>
+    <string name="fido_msg_error_0007">설정 > 생체인식 및 보안 > 지문에서\n지문등록이 필요합니다.</string>
+    <string name="fido_msg_error_0008">Touch ID 활성화가 허용되지 않아, \n해당 기능을 정상적으로 이용할 수 없습니다.\n단말기의 "설정>Touch ID 및 암호"에서 "암호켜기" 후 다시 시도해 주세요.</string>
+    <string name="fido_msg_error_0009">인증 시도 횟수를 초과하였습니다. 설정에서 잠김 해지 후 다시 시도해 주세요.</string>
+    <string name="fido_msg_error_3101">비밀번호(PIN번호) 5회 잘못 입력하여, 초기화되었습니다.</string>
+    <string name="fido_msg_error_3201">인증시도 횟수를 초과하였습니다.</string>
+    <string name="fido_msg_error_3204">단말설정에서 지문을 재등록 하셨다면, 인증수단관리 화면에서 지문 등록을 다시 해주세요.</string>
+    <string name="fido_msg_error_1004">등록/인증을 재시도 해주세요.</string>
+    <string name="fido_msg_error_not_available_biometry">지문등록이 불가능한 단말입니다.</string>
+    <string name="fido_msg_cancel">취소하였습니다.</string>
+
+    <!-- 결제 인증 -->
+    <string name="setting_payment">결제 인증</string>
+    <string name="setting_payment_auth_setting">결제 인증방법 설정 (KT멤버십 내 통장 결제 사용 시)</string>
+    <string name="payment_auth_setting">결제 인증 설정</string>
+    <string name="payment_auth_setting_info_01">KT 멤버십 내 통장 결제 시, 주 인증수단 설정 및\n비밀번호(PIN번호)를 변경할 수 있습니다.</string>
+    <string name="payment_auth_setting_info_02">내 통장 결제 연결 계좌 변경, 추가, 초기화는 KT 멤버십에서 가능합니다.</string>
+    <string name="payment_auth_setting_info_03">선택하신 인증 수단을 KT 멤버십 내 통장 결제 시,\n주 인증 수단으로 설정합니다.</string>
+    <string name="payment_auth_setting_change_pincode">비밀번호(PIN번호) 변경</string>
+    <string name="payment_auth_setting_reset_title">결제 인증 설정을\n초기화 하시겠습니까?</string>
+    <string name="payment_auth_setting_reset_contens">‘결제 인증 설정 초기화‘ 하실 경우\n등록된 비밀번호(PIN번호)/생체인증 정보 모두 삭제됩니다. </string>
+    <string name="payment_auth_setting_reset">결제 인증 설정 초기화</string>
+    <string name="payment_auth_pin_code">비밀번호(PIN번호)</string>
+    <string name="payment_auth_biometry">지문</string>
+
+    <!-- 영화 예매 -->
+    <string name="movie_ticket_msg_not_available">KT 멤버쉽 내 통장 결제를 지원하지 않는 단말입니다.\n확인 후 다시 시도해 주세요.</string>
+    <string name="movie_ticket_msg_fail_get_bank_account">계좌정보를 가져오는데 실패하였습니다. 확인 후 다시 시도해 주세요.</string>
+    <string name="movie_ticket_msg_not_join_title">KT 멤버쉽 내 통장 결제에 가입되어 있지 않습니다.</string>
+    <string name="movie_ticket_msg_not_join_content">내 통장 결제는 KT 멤버십 앱에서 가입이 가능합니다.\nKT 멤버십 앱으로 이동하시겠습니까?</string>
+    <string name="movie_ticket_msg_not_account_title">결제 계좌를 확인할 수 없습니다.</string>
+    <string name="movie_ticket_msg_not_account_content">내 통장결제 계좌 등록 확인은 KT 멤버십 앱에서 만 가능합니다.\nKT 멤버십 앱으로 이동하시겠습니까?</string>
+    <string name="movie_ticket_msg_fido_reg_title">결제인증 등록이 필요합니다.</string>
+    <string name="movie_ticket_msg_fido_reg_content">최초 결제 시에는 결제인증번호를 등록해야\n내 통장 결제를 이용하실 수 있습니다.</string>
+    <string name="movie_ticket_msg_fido_reg_complete_title">등록 완료되었습니다.</string>
+    <string name="movie_ticket_msg_fido_de_reg_all">결제 인증 설정을 초기화 하시겠습니까?</string>
+    <string name="movie_ticket_msg_fido_add_reg_complete">%s 등록이 완료되었습니다.</string>
+    <string name="movie_ticket_msg_biometry_reg_content">보안비밀번호 대신 지문을 사용하시겠습니까?</string>
+    <string name="movie_ticket_msg_biometry_reg_sub_content">설정 > 결제 인증방법 설정 > 결제인증에서 설정 할 수 있습니다.</string>
+    <string name="movie_ticket_msg_fido_change_passcode_complete_title">비밀번호(PIN번호)변경</string>
+    <string name="movie_ticket_msg_fido_change_passcode_complete">비밀번호(PIN번호) 변경이 완료 되었습니다.</string>
+    <string name="movie_ticket_msg_fido_de_reg_complete">등록된 %s이 초기화 되었습니다.</string>
+    <string name="movie_ticket_msg_fido_de_reg_all_complete">초기화 되었습니다.</string>
+
+    <!-- 내 통장 결제 -->
+    <string name="bank_account_title">KT 멤버십 내 통장결제</string>
+    <string name="bank_account_choice">결제하실 은행을 선택해주세요.</string>
+    <string name="bank_account_amount">결제 금액 : %s원</string>
+
+    <!-- 다른 앱 위에 표시 -->
+    <string name="overlay_permission_message_1">보이는 ARS 등 화면 서비스 사용을 위해 \"다른 앱 위에 표시\" 권한을 허용하시겠습니까?</string>
+    <string name="overlay_permission_message_1_1">보이는</string>
+
+    <string name="authorization_cancel_popup_1">보이는 ARS 등 화면 서비스 사용 해제 알림</string>
+    <string name="authorization_cancel_popup_2">\"보이는 ARS 사용\"등 화면 서비스 설정이 해제되었습니다.</string>
+    <string name="authorization_cancel_popup_3">※ 보이는 ARS 등 화면 서비스 이용을 위해서는 \"설정 > 보이는 ARS 등 화면 서비스 사용\"을 ON으로 설정해주세요.</string>
+
+    <!-- 긴급공지 -->
+    <string name="emergency_popup_btn_1">업데이트 하기</string>
+    <string name="emergency_popup_btn_2">닫기</string>
+    <string name="emergency_popup_btn_3">모바일로 보기</string>
+
+    <!-- 접근성 -->
+    <string name="talkback_ticommon_permit">허용 버튼</string>
+    <string name="talkback_common_not_allow">허용안함 버튼</string>
+    <string name="talkback_next_select">다음에 하기 버튼</string>
+    <string name="talkback_dialog_simple_search_agree">동의하기 버튼</string>
+
+    <string name="membership_withdrawal">회원탈퇴</string>
+
+    <string name="post_notification_popup_message_1">상단바 이용량 조회 및 PUSH 알림 수신, 보이는 ARS, 출석 체크 알림 수신 등 화면 서비스 이용을 위해 마이 케이티에서 알림을 보내도록 허용하시겠습니까?</string>
+    <string name="post_notification_popup_message_1_1">상단바 이용량 조회 및 PUSH 알림 수신, 보이는 ARS, 출석 체크 알림 수신 등 화면 서비스</string>
+
+    <string name="post_notification_cancel_popup_message_title">알림 서비스 미허용 알림</string>
+    <string name="post_notification_cancel_popup_message_1">알림 권한이 “미허용”으로 설정되어 “상단바 이용 조회, PUSH/혜택 알림, 보이는 ARS 등 화면 서비스”를 이용할 수 없습니다.</string>
+    <string name="post_notification_cancel_popup_message_2">※ 알림 서비스 이용을 위해서는 설정 메뉴에서 “상단바 이용 조회, PUSH 알림 수신, 보이는 ARS, 출석 체크 알림 등 화면 서비스”를 ON으로 설정해주세요.</string>
+
+    <string name="post_notification_cancel_popup_message_3">마이 케이티 앱에서 보내드리는 마케팅 정보를 PUSH 메시지로 수신하시겠습니까?</string>
+    <string name="post_notification_cancel_popup_message_3_1"> 미허용 시, 상단바 이용량 조회, PUSH 알림 수신, 보이는 ARS 등 화면 서비스를 이용할 수 없습니다.</string>
+    <string name="post_notification_cancel_popup_message_3_2"> PUSH 설정은 “설정>알림센터>PUSH 알림 수신”에서 변경 할 수 있습니다.</string>
+
+    <!-- 2023 리뉴얼   -->
+
+    <string name="coach_view_text_1">흔들면 바로 열려요. My 포인트 확인</string>
+    <string name="coach_view_text_2">내 이용 정보를 한눈에 볼 수 있어요.</string>
+    <string name="coach_view_text_3">홈 화면을 마음대로 화면 편집 번튼</string>
+    <string name="coach_view_text_5">전체 메뉴 메뉴 버튼</string>
+    <string name="coach_view_text_6">내 멤버십 등급, 사용내역 등 혜택정보 혜택 버튼</string>
+    <string name="coach_view_text_7">마이 메뉴 버튼</string>
+    <string name="coach_view_text_8">이용현황, 청구 요금 등 나를 위한 정보 확인 홈 버튼</string>
+    <string name="coach_view_text_9">다양한 상품 쇼핑과 편리한 주문까지 삽 버튼</string>
+    <string name="coach_view_text_10">kt 상품과 서비스를 대화하듯이 문의 챗봇 버튼</string>
+
+    <string name="coach_mark_page_msg_01">터치 한번으로 어디서든 내 이용 정보를 한눈에 볼 수 있어요.</string>
+
+    <string name="bluetooth_permission_check_popup">주변기기 연동한 고객 맞춤 광고서비스를 위해 “근처기기” 접근에 동의하시겠습니까?</string>
+    <string name="bluetooth_permission_check_popup_1">주변기기 연동한 고객 맞춤 광고서비스</string>
+    <string name="dialog_cancel_btn">동의안함</string>
+    <string name="dialog_yes_btn">동의</string>
+
+    <string name="progress_bar_message">잠시만 기다려주세요.</string>
+
+    <!--    BLUETOOTH_ADVERTISE-->
+    <string name="permission_bluetooth_advertise">근처 기기 엑세스</string>
+    <string name="permission_bluetooth_advertise_contents">주변기기 연동한 맞춤 광고서비스 제공</string>
+
+    <!--접근성 문구  -->
+    <string name="point">포인트</string>
+    <string name="view_details">상세보기 버튼</string>
+
+    <!-- 202306-error문거정리    -->
+    <string name="pop_network_error_message">데이터 설정 확인 후 다시 시도해주세요.</string>
+    <string name="common_pop_server_error">서버와 통신할 수 없습니다. 잠시 후 다시 시도해주세요.</string>
+    <string name="pop_webview_nuknown_network_error_message">현재 접속이 원활하지 않습니다.</string>
+
+    <!-- 202307-샵 출첵기능   -->
+    <string name="shop_attendance_setting_title">출석 알림 수신</string>
+
+    <string name="push_permission_info_text">앱 공지/이벤트, 프로모션 정보 안내</string>
+
+    <string name="shop_attendance_setting_title_info_description">출석 알림 수신\n 출석알림 수신 동의를 하면 매일 출석체크 알림을 받을 수 있습니다</string>
+    <string name="push_permission_info_text_description">PUSH 알림 수신\n 앱 공지/이벤트, 프로모션 정보 안내</string>
+
+    <!-- 202307-push 알림 수신  -->
+    <string name="tv_push_ad_warning_55_text">(선택) 개인정보 수집/이용동의에 동의하신 후 이용하실 수 있습니다.</string>
+    <string name="tv_push_ad_warning_56_text">(선택) 광고성 정보 수신동의/처리위탁에 동의하신 후 이용하실 수 있습니다.</string>
+
+    <!-- 202307- 삼성 플래그십 단말 위젯 -->
+    <string name="unlimited">무제한</string>
+    <string name="voice_call">음성통화</string>
+    <string name="basic_offerings">기본제공</string>
+    <string name="rate_check">요금 조회</string>
+    <string name="immediate_check">즉시 조회</string>
+    <string name="my_coupon">My 쿠폰</string>
+    <string name="kt_shop">Shop</string>
+    <string name="data_error_refresh_message">데이터 조회를 위해 새로고침 버튼을 눌러주세요.</string>
+
+
+    <!--230801 토스트 팝업 바텀-->
+    <string name="popup_message_today_close">오늘 하루 보지 않기</string>
+
+    <!--231019 출석 알림-->
+    <string name="popup_all_consent">모두 동의하기</string>
+    <string name="popup_push_receive">알림 받기</string>
+
+    <!--231226 푸시 촉진 토스트팝업 -->
+    <string name="popup_push_title1">[선택] 개인정보 수집/이용 동의</string>
+    <string name="popup_push_title2">[선택] 광고성 정보 수신 동의/처리 위탁</string>
+    <string name="popup_push_title3">[선택] PUSH 알림 수신</string>
+    <string name="popup_push_title4">해당 기능은 웹페이지에서 제공하며, ‘확인’ 버튼을 누르시면 모바일 웹페이지로 이동합니다.</string>
+    <string name="popup_push_title5">해당 기능은 웹페이지에서 제공됩니다. ‘확인’ 버튼을 누르시면 모바일 웹페이지로 이동하며, 데이터 요금이 발생할 수 있습니다.</string>
+    <string name="popup_push_title6">5G, LTE, 3G 네트워크 또는 해외 로밍 이용 시 데이터 요금이 발생할 수 있습니다. 서비스를 이용하시겠습니까?</string>
+
+    <!--240122 OS 최소지원 상향 -->
+    <string name="popup_os_text1">안내</string>
+    <string name="popup_os_text2">더 나은 서비스와 안정적인 환경 제공을 위해 마이케이티앱 이용을 위한 최소 지원 버전이 변경 되었습니다.\n\n마이케이티앱 이용을 위해 현재 사용 중인 휴대폰의 OS버전이 최신 버전인지 확인 후, 최신 버전이 아닐 경우 업데이트 후 이용 부탁 드립니다.</string>
+    <string name="popup_os_text3">최소 지원 안드로이드 버전</string>
+    <string name="popup_os_text4">현재 이용 중인 안드로이드 버전</string>
+    <string name="popup_os_text5">최소 지원 안드로이드 버전 업데이트가 지원되지 않는 휴대폰을 사용 중 이실 경우, 모바일 홈페이지 이용 부탁 드립니다.</string>
+    <string name="popup_os_text6">KT닷컴 모바일웹 이용하기</string>
+    <string name="popup_os_text7">App 종료</string>
+    <string name="popup_os_text8">%s 이상</string>
+    <string name="popup_os_text9">%d</string>
+    <string name="popup_os_text10">최신 안드로이드 버전 확인하기</string>
+    <string name="popup_os_text11">※ 단말 내 ‘설정 > 소프트웨어 업데이트’ 메뉴에서 업데이트 정보를 확인할 수 있습니다.</string>
+
+    <!-- 2405 PSM 하단 토스트팝업 -->
+    <string name="popup_psm_pause">정지</string>
+    <string name="popup_psm_play">재생</string>
+    <string name="popup_psm_left">왼쪽 이동</string>
+    <string name="popup_psm_right">오른쪽 이동</string>
+
+
+    <!-- 2406 간편로그인 안내문구 -->
+    <string name="simple_login_text1">일시적인 오류로 로그인을 실패하였습니다.\n다시 로그인해주세요.</string>
+    <string name="simple_login_text2">간편 로그인이 해제되었습니다.\n아이디 로그인을 해주세요.</string>
+    <string name="simple_login_text4">현재 간편 로그인을 사용 할 수 없습니다.\n간편 로그인 해제 후 아이디 로그인을 해주세요.</string>
+    <string name="simple_login_text5">입력하신 계정이 잠겨있어 비밀번호 재설정이 필요합니다\n비밀번호 재설정 후 로그인해주세요.</string>
+    <string name="simple_login_text7">네트워크 연결 상태 확인 후 다시 로그인해주세요.</string>
+    <string name="simple_login_text8">간편 로그인은 KT 아이디만 사용할 수 있습니다.\n입력하신 아이디로 서비스를 이용하시려면 간편 로그인 해제 후 로그인해주세요.</string>
+    <string name="simple_login_text9">다른 고객님과 동일한 아이디/비밀번호를 사용 중입니다.\n본인 확인을 위해 이름과 생년월일을 입력해주세요.</string>
+    <string name="simple_login_text10">입력하신 이름과 생년월일이 KT 아이디와 일치하지 않습니다.\n확인 후 다시 입력해주세요.</string>
+    <string name="simple_login_text11">잘못된 아이디/비밀번호 입니다.\n확인 후 다시 입력해주세요.</string>
+    <string name="simple_login_text12">사용 정지된 아이디 입니다.\n고객센터에 문의해주세요.</string>
+    <string name="simple_login_text13">법인 회원은 간편 로그인을 사용할 수 없습니다.\n아이디 로그인을 해주세요.</string>
+    <string name="simple_login_text14">14세 미만의 경우 부모 동의 후 간편 로그인을 이용할 수 있습니다.아이디 로그인을 해주세요.</string>
+    <string name="simple_login_text15">QOOK/SHOW 아이디로는 간편 로그인을 사용할 수 없습니다. KT 아이디로 통합 후 로그인해주세요.</string>
+    <string name="simple_login_text16">5회 이상 비밀번호를 잘못 입력하여 비밀번호 재설정 페이지로 이동합니다.</string>
+    <string name="simple_login_text17">아이디가 일치하지 않아 간편 로그인이 해제되었습니다\n아이디 로그인을 해주세요.</string>
+    <string name="simple_login_text18">입력하신 계정이 보안상 이유로 이용 하실 수 없습니다.\n고객센터에 문의해주세요.</string>
+    <string name="simple_login_text19">입력한 아이디/비밀번호로 2개 이상의 계정이 있습니다. KT 아이디로 간편 로그인을 사용하시겠습니까?</string>
+    <string name="simple_login_text20">간편 로그인 사용을 위해 마이케이티앱 업데이트가 필요합니다. 업데이트 후 다시 로그인해주세요.</string>
+    <string name="simple_login_text21">시스템 장애로 로그인을 실패하였습니다.\n앱을 다시 실행해주세요.</string>
+
+
+    <!-- 2406 프로젝트 스미싱지킴이 -->
+    <string name="popup_msg_safe_sdk_setting_title">스미싱 지킴이 사용 설정</string>
+    <string name="popup_msg_safe_sdk_setting_msg_1">‘마이케이티앱 스미싱 지킴이’ 사용을 해제하시겠습니까?</string>
+    <string name="popup_msg_safe_sdk_setting_msg_2">※ 서비스 사용을 해제하시면, 고객님의 휴대폰 단말에 수신된 문자나 카카오톡에서 스미싱 사이트 클릭 시 접속 차단 서비스 및 상품권 구매 사이트 클릭 시 주의 안내를 받아보실 수 없습니다.</string>
+    <string name="bio_login_cancel_popup_title">생체인증 로그인 사용 설정</string>
+    <string name="bio_login_cancel_popup_msg_1">‘마이케이티앱 생체인증 로그인’ 사용을 해제하시겠습니까?</string>
+    <string name="bio_login_cancel_popup_msg_2">※ ‘마이케이티앱 생체인증  로그인’ 사용 여부를 설정하는 메뉴 입니다.</string>
+    <string name="bio_login_cancel_popup_msg_3">※ 생체인증 정보를 삭제하려면 휴대폰 단말 내  설정 메뉴를 이용해주세요.</string>
 </resources>
