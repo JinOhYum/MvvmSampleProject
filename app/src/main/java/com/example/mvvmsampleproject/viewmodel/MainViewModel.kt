@@ -51,7 +51,7 @@ class MainViewModel @Inject constructor(private val repository: MainApiRepositor
 
     init {
         jsBridge.setCallBack(this)
-        _mainActivityData.value = MainActivityData(2, DefineConfig.URL_MAIN, Constant.MY_TAB)
+        _mainActivityData.value = MainActivityData(2, DefineConfig.URL_MAIN, Constant.MY_TAB , false)
     }
 
     /**

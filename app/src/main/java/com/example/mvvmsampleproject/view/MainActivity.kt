@@ -57,12 +57,14 @@ class MainActivity : BaseWebViewActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        this.onBackPressedDispatcher.addCallback(this , onBackPressedCallback)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(binding.root).apply {
             init()
-            setOnBottomClick()
             setWebViewSetting()
+            setOnBottomClick()
             onObserve()
         }
 
@@ -94,7 +96,7 @@ class MainActivity : BaseWebViewActivity() {
         if (newProgress >= 100) {
             hideBaseLoadingPopup()
             if(url != viewModel.mainActivityData.value!!.url){
-                setBottomTabData(url.toString())
+                setBottomTabData(url.toString() , false)
             }
         }
     }
@@ -111,7 +113,6 @@ class MainActivity : BaseWebViewActivity() {
      * MainActivity 셋팅
      * **/
     private fun init(){
-        this.onBackPressedDispatcher.addCallback(this , onBackPressedCallback)
         viewModel.onHttpIntroApi()
 
         viewModel.setBottomData(0,binding.mainTabBar.ivBottomMenu , binding.mainTabBar.menuText  , R.raw.menu_icon , R.raw.menu_icon_dark , R.mipmap.menu_icon)
@@ -157,7 +158,10 @@ class MainActivity : BaseWebViewActivity() {
             LogUtil.d("mainActivityData observe = $data")
             //하단탭바 감추기 여부
             isBottomTabVisible(data)
-            onMainWebViewLoadUrl(data.url)
+            if(data.mainBottomIsClick){
+                onMainWebViewLoadUrl(data.url)
+            }
+
         }
     }
 
@@ -166,16 +170,16 @@ class MainActivity : BaseWebViewActivity() {
      * **/
     private fun setOnBottomClick(){
         binding.mainTabBar.llMenu.setOnClickListener {
-            setBottomTabData(URL_MENU)
+            setBottomTabData(URL_MENU , true)
         }
         binding.mainTabBar.llBenefit.setOnClickListener {
-            setBottomTabData(URL_BENEFIT)
+            setBottomTabData(URL_BENEFIT , true)
         }
         binding.mainTabBar.llHome.setOnClickListener {
-            setBottomTabData(URL_MAIN)
+            setBottomTabData(URL_MAIN , true)
         }
         binding.mainTabBar.llShop.setOnClickListener {
-            setBottomTabData(URL_SHOP)
+            setBottomTabData(URL_SHOP , true)
         }
         binding.mainTabBar.llChatBot.setOnClickListener {
         }
@@ -243,8 +247,9 @@ class MainActivity : BaseWebViewActivity() {
      * 웹뷰 셋팅 (기존 마이케이티앱 + 신규 로직 추가)
      * **/
     private fun setWebViewSetting(){
-        setWebView(binding.wbMain , viewModel.jsBridge , true)
-        onMainWebViewLoadUrl(viewModel.mainActivityData.value!!.url)
+        setWebView(binding.wbMain , viewModel.jsBridge , true).apply {
+            onMainWebViewLoadUrl(viewModel.mainActivityData.value!!.url)
+        }
     }
 
     /**
@@ -274,25 +279,25 @@ class MainActivity : BaseWebViewActivity() {
      * 액티비티에서는 값을 가지고 있으면 안되고 값은 ViewModel 로 보내 LiveData 저장후
      * LiveData 의 옵저버를 통해 값이 변경된걸 확인한다
      * **/
-    private fun setBottomTabData(url : String){
+    private fun setBottomTabData(url : String , isClick : Boolean){
         when(url){
             URL_MENU->{//메뉴
-                viewModel.setMainActivityData(MainActivityData(0, url, SHOP_TAB))
+                viewModel.setMainActivityData(MainActivityData(0, url, MENU_TAB , isClick))
             }
             URL_BENEFIT->{//혜택
-                viewModel.setMainActivityData(MainActivityData(1, url, BENEFIT_TAB))
+                viewModel.setMainActivityData(MainActivityData(1, url, BENEFIT_TAB , isClick))
             }
             URL_MAIN->{//홈
-                viewModel.setMainActivityData(MainActivityData(2, url, MY_TAB))
+                viewModel.setMainActivityData(MainActivityData(2, url, MY_TAB , isClick))
             }
             URL_SHOP->{//샵
-                viewModel.setMainActivityData(MainActivityData(3, url, SHOP_TAB))
+                viewModel.setMainActivityData(MainActivityData(3, url, SHOP_TAB , isClick))
             }
             URL_CHATBOT ->{//챗봇
 //                viewModel.setMainActivityData(MainActivityData(4, url, SHOP_TAB))
             }
             else ->{
-                viewModel.setMainActivityData(MainActivityData(-1, url, ""))
+                viewModel.setMainActivityData(MainActivityData(-1, url, "" , isClick))
             }
         }
     }
