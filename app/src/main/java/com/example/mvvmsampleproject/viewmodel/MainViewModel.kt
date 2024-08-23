@@ -45,13 +45,16 @@ class MainViewModel @Inject constructor(private val repository: MainApiRepositor
     private var _mainBottomData: ArrayList<MainBottomData> = ArrayList<MainBottomData>()
     val mainBottomData: ArrayList<MainBottomData> get() = _mainBottomData
 
-    //하단 탭바 현재 position 관리 데이터
-    private var _mainActivityData: MutableLiveData<MainActivityData> = MutableLiveData<MainActivityData>()
-    val mainActivityData: LiveData<MainActivityData> get() = _mainActivityData
+    //main WebView Url 관리 데이터
+    private var _mainWebViewUrl: MutableLiveData<String> = MutableLiveData<String>(DefineConfig.URL_MAIN)
+    val mainWebViewUrl: LiveData<String> get() = _mainWebViewUrl
+
+    //하단 탭바 관리 데이터
+    private var _bottomTabPosition: MutableLiveData<String> = MutableLiveData<String>()
+    val bottomTabPosition: LiveData<String> get() = _bottomTabPosition
 
     init {
         jsBridge.setCallBack(this)
-        _mainActivityData.value = MainActivityData(2, DefineConfig.URL_MAIN, Constant.MY_TAB , false)
     }
 
     /**
@@ -106,7 +109,9 @@ class MainViewModel @Inject constructor(private val repository: MainApiRepositor
     }
 
 
-    //하단탭바 셋팅
+    /**
+     * 하단탭바 셋팅
+     * **/
     fun setBottomData(position : Int ,imageView : ImageView , textView: TextView ,
                       @RawRes gifNameRight : Int , @RawRes gifNameDark : Int , @DrawableRes baseImageName : Int){
         viewModelScope.launch {
@@ -115,15 +120,18 @@ class MainViewModel @Inject constructor(private val repository: MainApiRepositor
         }
     }
 
-    //메인에서 사용하는 유틸 데이터
-    fun setMainActivityData(mainActivityData: MainActivityData){
-        _mainActivityData.value = mainActivityData
+    /**
+     * MainWebVIew Url 변동 여부
+     * **/
+    fun setMainWebViewUrl(url: String){
+        _mainWebViewUrl.value = url
     }
 
-    //Url 변동 여부
-    fun setMainActivityUrl(url: String){
-        _mainActivityData.value!!.url = url
-        _mainActivityData.postValue(_mainActivityData.value)
+    /**
+     * 하단탭바 위치 여부
+     * **/
+    fun setBottomTabPosition(bottomTab : String){
+        _bottomTabPosition.value = bottomTab
     }
 
 }

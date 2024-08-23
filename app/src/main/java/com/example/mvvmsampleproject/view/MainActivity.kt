@@ -21,6 +21,7 @@ import com.example.mvvmsampleproject.util.Constant.BENEFIT_TAB
 import com.example.mvvmsampleproject.util.Constant.CHATBOT_TAB
 import com.example.mvvmsampleproject.util.Constant.MENU_TAB
 import com.example.mvvmsampleproject.util.Constant.MY_TAB
+import com.example.mvvmsampleproject.util.Constant.NOT_TAB
 import com.example.mvvmsampleproject.util.Constant.SHOP_TAB
 import com.example.mvvmsampleproject.util.DefineConfig.Companion.URL_BENEFIT
 import com.example.mvvmsampleproject.util.DefineConfig.Companion.URL_CHATBOT
@@ -80,11 +81,7 @@ class MainActivity : BaseWebViewActivity() {
      * **/
     override fun onWebViewStart(view: WebView?, urlType: Int, url: String?) {
         super.onWebViewStart(view, urlType, url)
-        /**
-         * 2407 인트로가 완전히 제거 되었을때만 실행
-         * 인트로가 완전히 벗겨지지 않은 상태에서 해당 로직 실행시
-         * 앱실행시 깜빡이는 현상 있음
-         */
+
         showBaseLoadingPopup()
     }
 
@@ -92,12 +89,9 @@ class MainActivity : BaseWebViewActivity() {
      * MainWebView Url 로딩 진행 시점
      * **/
     override fun onWebViewProgressChanged(url: String?, newProgress: Int) {
-        LogUtil.d("여기 onWebViewProgressChanged ="+url + " "+newProgress)
         if (newProgress >= 100) {
             hideBaseLoadingPopup()
-            if(url != viewModel.mainActivityData.value!!.url){
-                setBottomTabData(url.toString() , false)
-            }
+            setBottomTabPosition(url.toString())
         }
     }
 
@@ -121,7 +115,8 @@ class MainActivity : BaseWebViewActivity() {
         viewModel.setBottomData(3,binding.mainTabBar.ivBottomShop , binding.mainTabBar.shopText  , R.raw.shop_icon , R.raw.shop_icon_dark , R.mipmap.shop_icon)
         viewModel.setBottomData(4,binding.mainTabBar.ivBottomChatbot , binding.mainTabBar.chatbotText  , R.raw.chat_icon , R.raw.chat_icon_dark  , R.mipmap.chatbot_icon)
 
-        setBottomGifLoad(true, viewModel.mainActivityData.value!!.mainBottomPosition)
+        viewModel.setBottomTabPosition(MY_TAB)
+        setBottomGifLoad(true, getBottomTabPosition(MY_TAB))
 
 
         binding.swiperefreshlayout.setOnRefreshListener {
@@ -145,23 +140,34 @@ class MainActivity : BaseWebViewActivity() {
      * **/
     private fun onObserve(){
 
-        //introApiResponse 옵저버 데이터가 변경되면 반응
+        /**
+         * 인트로 api 값 처리 옵저버
+         * **/
         viewModel.introApiResponse.observe(this){data ->
             LogUtil.d("introApiResponse observe = "+data.code)
         }
 
+        /**
+         * 특정 브릿지 처리 옵저버
+         * **/
         viewModel.openLoginViewJsDto.observe(this){data ->
             LogUtil.d("openLoginViewJsDto observe = $data")
         }
 
-        viewModel.mainActivityData.observe(this){data ->
+        /**
+         * url 변경 감지 옵저버
+         * **/
+        viewModel.mainWebViewUrl.observe(this){data ->
             LogUtil.d("mainActivityData observe = $data")
+            onMainWebViewLoadUrl(data)
+        }
+
+        /**
+         * 하단탭바 변경 감지 롭저버
+         * **/
+        viewModel.bottomTabPosition.observe(this){data ->
             //하단탭바 감추기 여부
             isBottomTabVisible(data)
-            if(data.mainBottomIsClick){
-                onMainWebViewLoadUrl(data.url)
-            }
-
         }
     }
 
@@ -170,18 +176,24 @@ class MainActivity : BaseWebViewActivity() {
      * **/
     private fun setOnBottomClick(){
         binding.mainTabBar.llMenu.setOnClickListener {
-            setBottomTabData(URL_MENU , true)
+            onMainWebViewLoadUrl(URL_MENU)
+            setBottomTabPosition(URL_MENU)
         }
         binding.mainTabBar.llBenefit.setOnClickListener {
-            setBottomTabData(URL_BENEFIT , true)
+            onMainWebViewLoadUrl(URL_BENEFIT)
+            setBottomTabPosition(URL_BENEFIT)
         }
         binding.mainTabBar.llHome.setOnClickListener {
-            setBottomTabData(URL_MAIN , true)
+            onMainWebViewLoadUrl(URL_MAIN)
+            setBottomTabPosition(URL_MAIN)
         }
         binding.mainTabBar.llShop.setOnClickListener {
-            setBottomTabData(URL_SHOP , true)
+            onMainWebViewLoadUrl(URL_SHOP)
+            setBottomTabPosition(URL_SHOP)
         }
         binding.mainTabBar.llChatBot.setOnClickListener {
+//            viewModel.setBottomTabPosition(CHATBOT_TAB)
+//            viewModel.setMainWebViewUrl(URL_BENEFIT)
         }
     }
 
@@ -248,58 +260,82 @@ class MainActivity : BaseWebViewActivity() {
      * **/
     private fun setWebViewSetting(){
         setWebView(binding.wbMain , viewModel.jsBridge , true).apply {
-            onMainWebViewLoadUrl(viewModel.mainActivityData.value!!.url)
+            onMainWebViewLoadUrl(viewModel.mainWebViewUrl.value!!)
         }
     }
 
     /**
-     * 하단탭바 감추기 여부 (기존 마이케이티앱 + 신규 로직 추가)
+     * 하단탭바 감추기 여부 (신규 로직 url 이 아닌 탭바 기준)
      * **/
-    private fun isBottomTabVisible(data : MainActivityData){
-
-        //하단탭바 감추기 여부
-        if (!data.url.contains(URL_MENU)) {
-            if (data.url.contains(URL_MAIN) || data.url.contains(URL_BENEFIT) || data.url.contains(URL_SHOP)) {
-                binding.mainTabBar.root.visibility = View.VISIBLE
-            } else {
-                binding.mainTabBar.root.visibility = View.GONE
-            }
-        }
-        else{
+    private fun isBottomTabVisible(bottomTab : String){
+        LogUtil.d("isBottomTabVisible = "+bottomTab)
+        //메뉴 , 챗봇 , 탭이 불필요한 화면이면 하단 탭바 숨김
+        if(bottomTab == MENU_TAB || bottomTab == NOT_TAB || bottomTab == CHATBOT_TAB ){
             binding.mainTabBar.root.visibility = View.GONE
         }
-        if(data.mainBottomPosition != -1){
-            setBottomGifLoad(true, data.mainBottomPosition)
+        else{
+            binding.mainTabBar.root.visibility = View.VISIBLE
+        }
+
+        if(bottomTab != NOT_TAB){
+            setBottomGifLoad(true, getBottomTabPosition(bottomTab))
         }
     }
 
     /**
-     * 웹뷰애 실행되는 url 데이터 처리
-     * 메뉴,혜택,홈,샵,챗봇 을 제외한 나머지 url 은 position 을 -1 로 지정한다
-     * 액티비티에서는 값을 가지고 있으면 안되고 값은 ViewModel 로 보내 LiveData 저장후
-     * LiveData 의 옵저버를 통해 값이 변경된걸 확인한다
+     * Url 을 기준으로 해당 탭바 position 값 변경
      * **/
-    private fun setBottomTabData(url : String , isClick : Boolean){
+    private fun setBottomTabPosition(url : String){
+        LogUtil.d("setBottomTabPosition = " + url)
+
         when(url){
             URL_MENU->{//메뉴
-                viewModel.setMainActivityData(MainActivityData(0, url, MENU_TAB , isClick))
+                viewModel.setBottomTabPosition(MENU_TAB)
             }
             URL_BENEFIT->{//혜택
-                viewModel.setMainActivityData(MainActivityData(1, url, BENEFIT_TAB , isClick))
+                viewModel.setBottomTabPosition(BENEFIT_TAB)
             }
             URL_MAIN->{//홈
-                viewModel.setMainActivityData(MainActivityData(2, url, MY_TAB , isClick))
+                viewModel.setBottomTabPosition(MY_TAB)
             }
             URL_SHOP->{//샵
-                viewModel.setMainActivityData(MainActivityData(3, url, SHOP_TAB , isClick))
+                viewModel.setBottomTabPosition(SHOP_TAB)
             }
             URL_CHATBOT ->{//챗봇
 //                viewModel.setMainActivityData(MainActivityData(4, url, SHOP_TAB))
             }
-            else ->{
-                viewModel.setMainActivityData(MainActivityData(-1, url, "" , isClick))
+            else ->{//하단탭바가 필요없는 url
+                viewModel.setBottomTabPosition(NOT_TAB)
             }
         }
+    }
+
+    /**
+     * 바텀 위치에 따른 UI 셋팅 함수
+     * **/
+    private fun getBottomTabPosition(bottomTab : String) : Int{
+
+        when(bottomTab){
+            MENU_TAB->{//메뉴
+                return 0
+            }
+            BENEFIT_TAB->{//혜택
+                return 1
+            }
+            MY_TAB->{//홈
+                return 2
+            }
+            SHOP_TAB->{//샵
+                return 3
+            }
+            CHATBOT_TAB->{//챗봇
+                return 4
+            }
+            else->{//그 외 페이지
+                return -1
+            }
+        }
+
     }
 
 
