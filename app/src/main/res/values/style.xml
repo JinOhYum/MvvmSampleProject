@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 공통 팝업 버튼 -->
+    <style name="common_popup_btn">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/length_40</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/font_13</item>
+    </style>
+
+    <!-- 공통 팝업 취소 버튼 -->
+    <style name="common_cancel" parent="common_popup_btn">
+        <item name="android:background">@drawable/selector_btn_negative</item>
+        <item name="android:textColor">@drawable/selector_btn_negative</item>
+        <item name="android:text">@string/common_cancel</item>
+    </style>
+
+    <!-- 공통 팝업 확인 버튼 -->
+    <style name="common_confirm" parent="common_popup_btn">
+        <item name="android:background">@drawable/selector_btn_positive</item>
+        <item name="android:textColor">@drawable/selector_btn_positive</item>
+        <item name="android:text">@string/common_ok</item>
+    </style>
+
+    <!-- 공통 취소 버튼 -->
+    <style name="common_negative">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/length_50</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/font_15</item>
+        <item name="android:background">@drawable/selector_btn_negative</item>
+        <item name="android:textColor">@drawable/selector_btn_negative</item>
+        <item name="android:text">@string/common_cancel</item>
+    </style>
+
+    <!-- 공통 확인 버튼 -->
+    <style name="common_positive">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/length_50</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/font_15</item>
+        <item name="android:background">@drawable/selector_btn_confirm</item>
+        <item name="android:textColor">@drawable/selector_btn_confirm</item>
+        <item name="android:text">@string/common_ok</item>
+    </style>
+
+    <!-- 공통 하단 확인 버튼 -->
+    <style name="common_single_bottom_btn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/length_40</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginStart">@dimen/length_20</item>
+        <item name="android:layout_marginEnd">@dimen/length_20</item>
+        <item name="android:layout_marginBottom">@dimen/length_24</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:background">@drawable/selector_btn_confirm</item>
+        <item name="android:textColor">@drawable/selector_btn_confirm</item>
+        <item name="android:text">@string/common_ok</item>
+    </style>
+
+    <!-- 온보딩 튜토리얼 화인 버튼 -->
+    <style name="onboarding_btn">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/length_50</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/font_15</item>
+        <item name="android:background">@drawable/selector_btn_onboarding</item>
+        <item name="android:textColor">@drawable/selector_btn_onboarding</item>
+        <item name="android:text">@string/common_ok</item>
+    </style>
+
+    <style name="custom_btn_login">
+        <item name="android:textSize">@dimen/font_13</item>
+        <item name="android:textColor">@drawable/bg_radius_30_5ddfde</item>
+        <item name="android:background">@drawable/bg_radius_30_5ddfde</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="custom_btn_logout">
+        <item name="android:textSize">@dimen/font_13</item>
+        <item name="android:textColor">@drawable/bg_radius_30_ffffff</item>
+        <item name="android:background">@drawable/bg_radius_30_ffffff</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="custom_btn_action">
+        <item name="android:textSize">@dimen/font_13</item>
+        <item name="android:textColor">@drawable/bg_radius_30_ffffff</item>
+        <item name="android:background">@drawable/bg_radius_30_ffffff</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="custom_radiobutton_darkmode">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:drawableStart">@drawable/selector_darkmode_radio</item>
+        <item name="android:drawablePadding">@dimen/length_5</item>
+        <item name="android:textColor">@drawable/selector_darkmode_radio_text</item>
+        <item name="android:button">@null</item>
+        <item name="android:checked">false</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="custom_radiobutton_darkmode2">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:drawableStart">@drawable/selector_darkmode_radio</item>
+        <item name="android:drawablePadding">@dimen/length_5</item>
+        <item name="android:textColor">@drawable/selector_darkmode_radio_text_02</item>
+        <item name="android:button">@null</item>
+        <item name="android:checked">false</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="custom_radiobutton">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:drawableStart">@drawable/selector_btn_radio</item>
+        <item name="android:drawablePadding">@dimen/length_5</item>
+        <item name="android:textColor">@drawable/selector_radio_text</item>
+        <item name="android:button">@null</item>
+        <item name="android:checked">false</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="roboto_medium_dark_mode_9_000000">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/font_9</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+        <item name="android:letterSpacing">@dimen/text_letter_pacing</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+
+    <style name="noto_sans_regular_single_9_000000">
+        <item name="android:fontFamily">@font/noto_regular</item>
+        <item name="android:textSize">@dimen/font_9</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:letterSpacing">@dimen/widget_text_letter_pacing_01</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="noto_sans_regular_single_9_01A69F">
+        <item name="android:fontFamily">@font/noto_regular</item>
+        <item name="android:textSize">@dimen/font_9</item>
+        <item name="android:textColor">@color/color_subtext</item>
+        <item name="android:letterSpacing">@dimen/text_letter_pacing</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="noto_sans_regular_single_dark_mode_9_000000">
+        <item name="android:fontFamily">@font/noto_sans_regular</item>
+        <item name="android:textSize">@dimen/font_9</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+        <item name="android:letterSpacing">@dimen/noti_text_letter_pacing_02</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+
+    <style name="noto_sans_regular_10_000000">
+        <item name="android:fontFamily">@font/noto_regular</item>
+        <item name="android:textSize">@dimen/font_10</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:letterSpacing">@dimen/widget_text_letter_pacing_01</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="noto_sans_regular_single_10_000000">
+        <item name="android:fontFamily">@font/noto_regular</item>
+        <item name="android:textSize">@dimen/font_10</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:letterSpacing">@dimen/widget_text_letter_pacing_01</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="noto_sans_regular_bold_single_dark_mode_10_000000">
+        <item name="android:fontFamily">@font/noto_bold</item>
+        <item name="android:textSize">@dimen/font_10</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+        <item name="android:letterSpacing">@dimen/noti_text_letter_pacing_02</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="noto_sans_regular_11_000000">
+        <item name="android:fontFamily">@font/noto_regular</item>
+        <item name="android:textSize">@dimen/font_11</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:letterSpacing">@dimen/text_letter_pacing</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="noto_sans_regular_single_11_000000">
+        <item name="android:fontFamily">@font/noto_regular</item>
+        <item name="android:textSize">@dimen/font_11</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:letterSpacing">@dimen/text_letter_pacing</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="noto_sans_bold_single_11_000000">
+        <item name="android:fontFamily">@font/noto_bold</item>
+        <item name="android:textSize">@dimen/font_11</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:letterSpacing">@dimen/text_letter_pacing</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="roboto_medium_single_11_000000">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/font_11</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:letterSpacing">@dimen/text_letter_pacing</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="roboto_medium_single_dark_mode_11_000000">
+        <item name="android:fontFamily">@font/noto_sans_bold</item>
+        <item name="android:textSize">@dimen/font_11</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+        <item name="android:letterSpacing">@dimen/text_letter_pacing</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="custom_text_12_000000">
+        <item name="android:textSize">@dimen/font_12</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="custom_text_mode_12_000000">
+        <item name="android:textSize">@dimen/font_12</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+    </style>
+
+    <style name="roboto_medium_single_12_000000">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/font_12</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:letterSpacing">@dimen/text_letter_pacing</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="roboto_medium_single_12_01A69F">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/font_12</item>
+        <item name="android:textColor">@color/color_subtext</item>
+        <item name="android:letterSpacing">@dimen/text_letter_pacing</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="custom_text_13_ffffff">
+        <item name="android:textSize">@dimen/font_13</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="custom_text_13_222222">
+        <item name="android:textSize">@dimen/font_13</item>
+        <item name="android:textColor">@color/color222222</item>
+    </style>
+
+    <style name="custom_text_mode_13_000000">
+        <item name="android:textSize">@dimen/font_12</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+    </style>
+
+    <style name="custom_text_13_808080">
+        <item name="android:textSize">@dimen/font_13</item>
+        <item name="android:textColor">@color/color808080</item>
+    </style>
+
+    <style name="roboto_medium_single_13_01A69F">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/font_13</item>
+        <item name="android:textColor">@color/color_subtext</item>
+        <item name="android:letterSpacing">@dimen/text_letter_pacing</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="roboto_medium_single_14_000000">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:letterSpacing">@dimen/text_letter_pacing</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="roboto_medium_single_14_01A69F">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/color_subtext</item>
+        <item name="android:letterSpacing">@dimen/noti_text_letter_pacing_02</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="custom_text_14_ffffff">
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="custom_text_mode_14_000000">
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+    </style>
+
+    <style name="custom_text_single_14_000000">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+    </style>
+
+    <style name="custom_text_14_000000">
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="custom_text_14_01a69f">
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/color_subtext</item>
+    </style>
+
+    <style name="custom_text_single_15_000000">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/font_15</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="custom_text_15_000000">
+        <item name="android:textSize">@dimen/font_15</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="custom_text_mode_15_000000">
+        <item name="android:textSize">@dimen/font_15</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+    </style>
+
+    <style name="custom_text_15_222222">
+        <item name="android:textSize">@dimen/font_15</item>
+        <item name="android:textColor">@color/color222222</item>
+    </style>
+
+    <style name="roboto_medium_single_15_01A69F">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/font_15</item>
+        <item name="android:textColor">@color/color_subtext</item>
+        <item name="android:letterSpacing">@dimen/text_letter_pacing</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="roboto_medium_single_16_01A69F">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/font_16</item>
+        <item name="android:textColor">@color/color_subtext</item>
+        <item name="android:letterSpacing">@dimen/text_letter_pacing</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="custom_text_16_000000">
+        <item name="android:textSize">@dimen/font_16</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="custom_text_mode_16_000000">
+        <item name="android:textSize">@dimen/font_16</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+    </style>
+
+    <style name="custom_text_mode_17_000000">
+        <item name="android:textSize">@dimen/font_17</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+    </style>
+
+    <style name="custom_text_18_ffffff">
+        <item name="android:textSize">@dimen/font_18</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="custom_text_18_bold_ffffff">
+        <item name="android:textSize">@dimen/font_18</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="custom_text_18_000000">
+        <item name="android:textSize">@dimen/font_18</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="custom_text_single_18_000000">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/font_18</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="notification_9_444444">
+        <item name="android:textSize">@dimen/font_9</item>
+        <item name="android:textColor">@color/notify_c444444</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="notification_11_000000">
+        <item name="android:textSize">@dimen/font_11</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+        <item name="android:letterSpacing">@dimen/widget_text_letter_pacing_01</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="notification_12_222222" parent="notification_11_000000">
+        <item name="android:textColor">@color/notify_c222222</item>
+        <item name="android:textSize">@dimen/font_12</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="notification_12_000000" parent="notification_11_000000">
+        <item name="android:textSize">@dimen/font_12</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="notification_13_000000" parent="notification_11_000000">
+        <item name="android:textSize">@dimen/font_13</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="notification_14_000000">
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+        <item name="android:letterSpacing">@dimen/noti_text_letter_pacing_02</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="widget_single_10_666666">
+        <item name="android:textSize">@dimen/font_10</item>
+        <item name="android:textColor">@color/color666666</item>
+        <item name="android:letterSpacing">@dimen/widget_text_letter_pacing_01</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="widget_medium_single_13_222222">
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">@dimen/font_13</item>
+        <item name="android:textColor">@color/color222222</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="widget_medium_single_12_000000" parent="custom_text_12_000000">
+        <item name="android:letterSpacing">@dimen/widget_text_letter_pacing_01</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="widget_medium_single_15_000000" parent="custom_text_15_000000">
+        <item name="android:letterSpacing">@dimen/widget_text_letter_pacing_01</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="widget_medium_single_16_000000" parent="custom_text_16_000000">
+        <item name="android:letterSpacing">@dimen/widget_text_letter_pacing_01</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="widget_medium_single_18_000000" parent="custom_text_18_000000">
+        <item name="android:letterSpacing">@dimen/widget_text_letter_pacing_02</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="widget_medium_single_20_000000" parent="widget_medium_single_18_000000">
+        <item name="android:textSize">@dimen/font_20</item>
+    </style>
+
+    <style name="widget_loading_bar">
+        <item name="android:layout_width">@dimen/length_52</item>
+        <item name="android:layout_height">@dimen/length_32</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:contentDescription">@string/acc_common_loading</item>
+        <item name="android:indeterminateOnly">true</item>
+    </style>
+
+    <style name="custom_text_20_000000">
+        <item name="android:textSize">@dimen/font_20</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="roboto_medium_single_20_01A69F">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/font_20</item>
+        <item name="android:textColor">@color/color_subtext</item>
+        <item name="android:letterSpacing">@dimen/text_letter_pacing</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="custom_text_40_000000">
+        <item name="android:textSize">@dimen/font_40</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="custom_text_mode_18_000000">
+        <item name="android:textSize">@dimen/font_18</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+    </style>
+
+    <style name="custom_text_25_000000">
+        <item name="android:textSize">@dimen/font_25</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="custom_text_mode_25_000000">
+        <item name="android:textSize">@dimen/font_25</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+    </style>
+
+    <style name="roboto_25_000000">
+        <item name="android:fontFamily">@font/robo_regular</item>
+        <item name="android:textSize">@dimen/font_25</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:letterSpacing">@dimen/text_letter_pacing</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="custom_text_mode_28_000000">
+        <item name="android:textSize">@dimen/font_28</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+        <item name="android:background">@color/status_bg</item>
+    </style>
+
+    <style name="custom_fab_label">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/font_15</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="permission_item_frame">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/length_20</item>
+        <item name="android:layout_marginTop">@dimen/length_12</item>
+        <item name="android:layout_marginEnd">@dimen/length_20</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="permission_item_title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginStart">@dimen/length_60</item>
+        <item name="android:textColor">@color/colorDarkModeBlack</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="permission_item_contents">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginTop">@dimen/length_22</item>
+        <item name="android:layout_marginStart">@dimen/length_60</item>
+        <item name="android:textColor">@color/color7f7f7f</item>
+        <item name="android:textSize">@dimen/font_13</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="permission_sub_contents">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/color7f7f7f</item>
+        <item name="android:textSize">@dimen/font_13</item>
+    </style>
+
+</resources>

@@ -7,6 +7,7 @@ object DefineCommon {
 
     const val DEFAULT_WIDGET_NOTI_CHECK_MIN = -1 // 위젯 작업 공지 갱신 주기
 
+    const val REQ_ERROR = -999 // requestCode 에 값이 제대로 전달되지 않아 디폴트 값이 필요할때
 
     const val DIALOG_ID_BASE = 1000
     const val API_ID_BASE = 2000

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- 원본 * 0.86 -->
+    <dimen name="length_1">0.9dp</dimen>
+    <dimen name="length_2">1.7dp</dimen>
+    <dimen name="length_3">2.6dp</dimen>
+    <dimen name="length_4">3.4dp</dimen>
+    <dimen name="length_5">4.3dp</dimen>
+    <dimen name="length_6">5.2dp</dimen>
+    <dimen name="length_7">6.0dp</dimen>
+    <dimen name="length_8">6.9dp</dimen>
+    <dimen name="length_9">7.8dp</dimen>
+    <dimen name="length_10">8.6dp</dimen>
+    <dimen name="length_12">10.3dp</dimen>
+    <dimen name="length_13">11.2dp</dimen>
+    <dimen name="length_14">12.1dp</dimen>
+    <dimen name="length_15">12.9dp</dimen>
+    <dimen name="length_16">13.8dp</dimen>
+    <dimen name="length_18">15.5dp</dimen>
+    <dimen name="length_19">16.4dp</dimen>
+    <dimen name="length_20">17.2dp</dimen>
+    <dimen name="length_21">18.1dp</dimen>
+    <dimen name="length_22">18.9dp</dimen>
+    <dimen name="length_23">19.8dp</dimen>
+    <dimen name="length_24">20.7dp</dimen>
+    <dimen name="length_25">21.5dp</dimen>
+    <dimen name="length_26">22.4dp</dimen>
+    <dimen name="length_27">23.3dp</dimen>
+    <dimen name="length_28">24.1dp</dimen>
+    <dimen name="length_30">25.8dp</dimen>
+    <dimen name="length_31">26.7dp</dimen>
+    <dimen name="length_32">27.5dp</dimen>
+    <dimen name="length_33">28.4dp</dimen>
+    <dimen name="length_34">29.3dp</dimen>
+    <dimen name="length_35">30.1dp</dimen>
+    <dimen name="length_38">32.7dp</dimen>
+    <dimen name="length_40">34.4dp</dimen>
+    <dimen name="length_43">37.0dp</dimen>
+    <dimen name="length_44">37.9dp</dimen>
+    <dimen name="length_45">38.8dp</dimen>
+    <dimen name="length_48">41.3dp</dimen>
+    <dimen name="length_49">42.2dp</dimen>
+    <dimen name="length_50">43.1dp</dimen>
+    <dimen name="length_52">44.8dp</dimen>
+    <dimen name="length_54">46.5dp</dimen>
+    <dimen name="length_55">47.4dp</dimen>
+    <dimen name="length_60">51.7dp</dimen>
+    <dimen name="length_61">52.5dp</dimen>
+    <dimen name="length_62">53.4dp</dimen>
+    <dimen name="length_63">54.3dp</dimen>
+    <dimen name="length_65">56.0dp</dimen>
+    <dimen name="length_68">58.6dp</dimen>
+    <dimen name="length_70">60.3dp</dimen>
+    <dimen name="length_72">62.0dp</dimen>
+    <dimen name="length_75">64.6dp</dimen>
+    <dimen name="length_76">65.4dp</dimen>
+    <dimen name="length_77">66.3dp</dimen>
+    <dimen name="length_79">68.0dp</dimen>
+    <dimen name="length_80">68.9dp</dimen>
+    <dimen name="length_85">73.2dp</dimen>
+    <dimen name="length_90">77.5dp</dimen>
+    <dimen name="length_91">78.4dp</dimen>
+    <dimen name="length_100">86.1dp</dimen>
+    <dimen name="length_106">91.3dp</dimen>
+    <dimen name="length_108">93.0dp</dimen>
+    <dimen name="length_110">94.7dp</dimen>
+    <dimen name="length_115">99.0dp</dimen>
+    <dimen name="length_130">111.9dp</dimen>
+    <dimen name="length_140">120.6dp</dimen>
+    <dimen name="length_144">124.0dp</dimen>
+    <dimen name="length_160">137.8dp</dimen>
+    <dimen name="length_170">146.4dp</dimen>
+    <dimen name="length_187">161.0dp</dimen>
+    <dimen name="length_200">172.2dp</dimen>
+
+    <!-- Font size -->
+    <dimen name="font_10">8.6dp</dimen>
+    <dimen name="font_12">10.3dp</dimen>
+    <dimen name="font_13">11.2dp</dimen>
+    <dimen name="font_14">12.1dp</dimen>
+    <dimen name="font_15">12.9dp</dimen>
+    <dimen name="font_16">13.8dp</dimen>
+    <dimen name="font_17">14.6dp</dimen>
+    <dimen name="font_18">15.5dp</dimen>
+    <dimen name="font_19">16.4dp</dimen>
+    <dimen name="font_20">17.2dp</dimen>
+    <dimen name="font_25">21.5dp</dimen>
+    <dimen name="font_23">19.8dp</dimen>
+    <dimen name="font_26">22.4dp</dimen>
+    <dimen name="font_28">24.1dp</dimen>
+    <dimen name="font_35">30.0dp</dimen>
+    <dimen name="font_40">34.4dp</dimen>
+
+    <!-- intro -->
+    <!--<dimen name="intro_app_name_text_size">45.33dp</dimen>-->
+    <!--<dimen name="intro_logo_margin_top">99.33dp</dimen>-->
+    <!-- [DR-2019-06243] 폴더블 단말 대응 -->
+    <!-- 인트로 > 로고 상단하단 비율 -->
+
+    <!-- 앱 암호 입력 키패드 폰트 크기 -->
+
+
+    <!-- 보이스톡 -->
+
+
+    <!-- 스캐너 : ocr, barcode -->
+    <dimen name="scanner_close_gap">16dp</dimen>
+    <dimen name="scanner_close_size">13.33dp</dimen>
+    <dimen name="scanner_guide_marg_top">66.67dp</dimen>
+    <dimen name="scanner_scan_area_width">280dp</dimen>
+    <dimen name="scanner_scan_area_height">90dp</dimen>
+    <dimen name="scanner_cancel_width">277.33dp</dimen>
+    <dimen name="scanner_cancel_height">34.67dp</dimen>
+    <dimen name="scanner_cancel_marg_bott">21.33dp</dimen>
+
+
+</resources>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:customText="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp"
+        tools:viewBindingIgnore="true">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@color/toolbar_bg"
+            android:minHeight="@dimen/toolbar_height"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp"
+            app:titleMarginStart="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_65"
+                android:gravity="center_vertical"
+                android:paddingEnd="@dimen/length_25">
+
+                <!-- 뒤로가기 -->
+                <LinearLayout
+                    android:id="@+id/btn_toolbar_back"
+                    android:layout_width="@dimen/length_50"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/length_20">
+
+                    <ImageView
+                        android:layout_width="@dimen/length_25"
+                        android:layout_height="@dimen/length_25"
+                        android:contentDescription="@string/acc_common_prev_page_btn"
+                        app:srcCompat="@drawable/icon_toolbar_back" />
+
+                </LinearLayout>
+
+                <com.example.mvvmsampleproject.dialog.custom.CustomTextView
+                    android:id="@+id/tv_toolbar_title"
+                    style="@style/custom_text_mode_18_000000"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/length_30"
+                    android:layout_toEndOf="@id/btn_toolbar_back"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textStyle="bold"
+                    customText:typeface="BOLD"
+                    tools:text="요금조회 &amp; 납부" />
+
+                <ImageView
+                    android:id="@+id/btn_toolbar_home"
+                    android:layout_width="@dimen/length_25"
+                    android:layout_height="@dimen/length_25"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/acc_common_home"
+                    android:visibility="invisible"
+                    app:srcCompat="@drawable/icon_toolbar_home" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+</layout>

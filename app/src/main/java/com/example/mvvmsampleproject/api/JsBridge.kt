@@ -1,14 +1,18 @@
 package com.example.mvvmsampleproject.api
 
-import android.util.Log
 import android.webkit.JavascriptInterface
 import com.example.mvvmsampleproject.util.LogUtil
 
 class JsBridge{
 
-    private var callback: JsCallback? = null
-    private val tag: String = "JsBridge_"
+
     val JS_REQ_TEST = 1
+    val JS_REQ_CLOSE_ACTIVITY = 15
+
+    private var callback: JsCallback? = null
+
+
+    private val TAG = "JsBridge_"
 
     interface JsCallback {
         fun onRequestFromJs(requestId: Int, tag: String?, vararg params: String?)
@@ -20,7 +24,7 @@ class JsBridge{
 
     private fun requestCallback(requestId: Int, vararg params: String?) {
         if(callback != null){
-            callback?.onRequestFromJs(requestId, tag, *params)
+            callback?.onRequestFromJs(requestId, TAG, *params)
         }
     }
 
@@ -34,4 +38,10 @@ class JsBridge{
         requestCallback(JS_REQ_TEST)
     }
 
+    // 웹에서 앱 화면 닫기 요청
+    @JavascriptInterface
+    fun closeWindow() {
+        LogUtil.i(TAG + "closeWindow : "  )
+        requestCallback(JS_REQ_CLOSE_ACTIVITY)
+    }
 }

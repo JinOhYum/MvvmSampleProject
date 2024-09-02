@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <layer-list>
+            <item android:drawable="@drawable/widget_top_graph_bg" />
+        </layer-list>
+    </item>
+    <item
+        android:id="@android:id/progress"
+        android:bottom="0dp"
+        android:left="0dp"
+        android:right="0dp"
+        android:top="0dp">
+        <clip>
+            <layer-list>
+                <item>
+                    <scale android:scaleWidth="100%">
+                        <shape android:shape="rectangle">
+                            <corners android:radius="@dimen/length_1" />
+                            <solid android:color="@color/colorea3434" />
+                        </shape>
+                    </scale>
+                </item>
+
+                <item android:top="@dimen/length_6">
+                    <scale android:scaleWidth="100%">
+                        <shape android:shape="rectangle">
+                            <corners android:radius="@dimen/length_1" />
+                            <gradient
+                                android:angle="90"
+                                android:endColor="@color/colord9d9d9"
+                                android:startColor="@color/colord9d9d9" />
+                        </shape>
+                    </scale>
+                </item>
+            </layer-list>
+        </clip>
+    </item>
+</layer-list>

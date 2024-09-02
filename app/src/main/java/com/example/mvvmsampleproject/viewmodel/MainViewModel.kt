@@ -29,8 +29,8 @@ import javax.inject.Inject
  * **/
 @HiltViewModel //@HiltViewModel Hilt ViewModel
 class MainViewModel @Inject constructor(private val repository: MainApiRepository,
-                                        private val preferenceUtil: PreferenceUtil,
-                                        val jsBridge: JsBridge) : BaseViewModel(),JsBridge.JsCallback  {
+                                        preferenceUtil: PreferenceUtil,
+                                        val jsBridge: JsBridge) : BaseViewModel(preferenceUtil),JsBridge.JsCallback  {
 
     private val gson : Gson = Gson()
 

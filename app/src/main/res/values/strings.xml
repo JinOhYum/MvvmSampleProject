@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MvvmSampleProject</string>
 
-<!--    <string name="app_name">마이 케이티</string>-->
+    <!--    <string name="app_name">마이 케이티</string>-->
 
     <string name="common_accessibility">모바일 접근성 인증</string>
     <string name="common_next">다음</string>
@@ -453,7 +453,6 @@
     <string name="setting_push_ad_info_item">광고성 정보 수신</string>
     <string name="setting_push_shop_item">출석 체크 알림 수신</string>
     <string name="setting_push_usage_item"></string>
-
 
 
     <!-- 단말정보 수집 이메일 -->

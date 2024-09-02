@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/black" android:state_enabled="true" android:state_pressed="true">
+        <shape>
+            <stroke android:width="@dimen/length_1" android:color="@color/color5ddfde" />
+            <corners android:radius="@dimen/length_30" />
+            <solid android:color="@color/color5ddfde" />
+            <padding android:left="@dimen/length_15" android:right="@dimen/length_15" android:top="@dimen/length_5" android:bottom="@dimen/length_5" />
+        </shape>
+    </item>
+
+    <item android:color="@color/black" android:state_enabled="true" android:state_focused="true">
+        <shape>
+            <stroke android:width="@dimen/length_1" android:color="@color/color5ddfde" />
+            <corners android:radius="@dimen/length_30" />
+            <solid android:color="@color/color5ddfde" />
+            <padding android:left="@dimen/length_15" android:right="@dimen/length_15" android:top="@dimen/length_5" android:bottom="@dimen/length_5" />
+        </shape>
+    </item>
+
+    <item android:color="@color/black" android:state_enabled="false">
+        <shape>
+            <stroke android:width="@dimen/length_1" android:color="@color/color5ddfde" />
+            <corners android:radius="@dimen/length_30" />
+            <solid android:color="@color/color5ddfde" />
+            <padding android:left="@dimen/length_15" android:right="@dimen/length_15" android:top="@dimen/length_5" android:bottom="@dimen/length_5" />
+        </shape>
+    </item>
+
+    <item android:color="@color/black" android:state_enabled="true">
+        <shape>
+            <stroke android:width="@dimen/length_1" android:color="@color/color5ddfde" />
+            <corners android:radius="@dimen/length_30" />
+            <solid android:color="@color/color5ddfde" />
+            <padding android:left="@dimen/length_15" android:right="@dimen/length_15" android:top="@dimen/length_5" android:bottom="@dimen/length_5" />
+        </shape>
+    </item>
+</selector>

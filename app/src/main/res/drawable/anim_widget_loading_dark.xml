@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="false">
+    <item android:drawable="@drawable/widget_loading_01_dark" android:duration="80" />
+    <item android:drawable="@drawable/widget_loading_02_dark" android:duration="80" />
+    <item android:drawable="@drawable/widget_loading_03_dark" android:duration="80" />
+    <item android:drawable="@drawable/widget_loading_04_dark" android:duration="80" />
+    <item android:drawable="@drawable/widget_loading_05_dark" android:duration="80" />
+    <item android:drawable="@drawable/widget_loading_06_dark" android:duration="80" />
+    <item android:drawable="@drawable/widget_loading_07_dark" android:duration="80" />
+    <item android:drawable="@drawable/widget_loading_08_dark" android:duration="80" />
+    <item android:drawable="@drawable/widget_loading_09_dark" android:duration="80" />
+    <item android:drawable="@drawable/widget_loading_10_dark" android:duration="80" />
+    <item android:drawable="@drawable/widget_loading_11_dark" android:duration="80" />
+    <item android:drawable="@drawable/widget_loading_12_dark" android:duration="80" />
+    <item android:drawable="@drawable/widget_loading_13_dark" android:duration="80" />
+    <item android:drawable="@drawable/widget_loading_14_dark" android:duration="80" />
+    <item android:drawable="@drawable/widget_loading_15_dark" android:duration="80" />
+    <item android:drawable="@drawable/widget_loading_16_dark" android:duration="80" />
+</animation-list>

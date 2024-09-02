@@ -95,6 +95,11 @@ open class BaseWebViewActivity : BaseActivity() , OnWebViewListener {
 
         Log.e("WebView ","setWebView 22")
     }
+
+    override fun doBaseActivityResult(data: Intent?) {
+        super.doBaseActivityResult(data)
+    }
+
     fun callJavaScript(webView: WebView?, funcName: String?, vararg params: String?){
         if (webView == null)
             return

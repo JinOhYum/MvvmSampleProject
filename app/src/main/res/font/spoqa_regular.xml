@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Api 26(8.0)에 추가 되었으며
+    support lib 26을 사용할 경우 api level 16(4.1) 이상에서 사용할 수 있다.
+    하위 버전 지원을 위해 app namespace에도 추가되어야 한다.
+
+    https://developer.android.com/guide/topics/ui/look-and-feel/fonts-in-xml.html?hl=ko
+
+    Typeface typeface = ResourcesCompat.getFont(context, R.font.noto_serif);
+    textView.setTypeface(typeface);
+
+-->
+<font-family
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <font
+        android:font="@font/spoqa_sans_regular"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/spoqa_sans_regular"
+        app:fontStyle="normal"
+        app:fontWeight="400"/>
+
+    <font
+        android:font="@font/spoqa_sans_regular"
+        android:fontStyle="italic"
+        android:fontWeight="400"
+        app:font="@font/spoqa_sans_regular"
+        app:fontStyle="normal"
+        app:fontWeight="400"/>
+</font-family>

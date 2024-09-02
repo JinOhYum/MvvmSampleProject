@@ -1,5 +1,6 @@
 package com.example.mvvmsampleproject.view
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.TextUtils
@@ -15,7 +16,6 @@ import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.mvvmsampleproject.R
-import com.example.mvvmsampleproject.data.model.MainActivityData
 import com.example.mvvmsampleproject.databinding.ActivityMainBinding
 import com.example.mvvmsampleproject.util.Constant.BENEFIT_TAB
 import com.example.mvvmsampleproject.util.Constant.CHATBOT_TAB
@@ -23,11 +23,14 @@ import com.example.mvvmsampleproject.util.Constant.MENU_TAB
 import com.example.mvvmsampleproject.util.Constant.MY_TAB
 import com.example.mvvmsampleproject.util.Constant.NOT_TAB
 import com.example.mvvmsampleproject.util.Constant.SHOP_TAB
+import com.example.mvvmsampleproject.util.DefineCode
+import com.example.mvvmsampleproject.util.DefineCommon
 import com.example.mvvmsampleproject.util.DefineConfig.Companion.URL_BENEFIT
 import com.example.mvvmsampleproject.util.DefineConfig.Companion.URL_CHATBOT
 import com.example.mvvmsampleproject.util.DefineConfig.Companion.URL_MAIN
 import com.example.mvvmsampleproject.util.DefineConfig.Companion.URL_MENU
 import com.example.mvvmsampleproject.util.DefineConfig.Companion.URL_SHOP
+import com.example.mvvmsampleproject.util.DefineField
 import com.example.mvvmsampleproject.util.DefineUrl
 import com.example.mvvmsampleproject.util.LogUtil
 import com.example.mvvmsampleproject.viewmodel.MainViewModel
@@ -55,6 +58,8 @@ class MainActivity : BaseWebViewActivity() {
         }
     }
 
+    private val TAG ="MainActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -77,11 +82,30 @@ class MainActivity : BaseWebViewActivity() {
     }
 
     /**
+     * BaseActivity 에서 startActivityForResult 를 통해 데이터 리턴 받는곳
+     * **/
+    override fun doBaseActivityResult(data: Intent?) {
+        super.doBaseActivityResult(data)
+        LogUtil.d("여기 Main")
+        if(data != null){
+            val requestCode = data.getIntExtra("requestCode", DefineCommon.REQ_ERROR)
+            when(requestCode){
+
+                DefineCommon.REQ_ACT_LOGIN->{
+                    LogUtil.d("여기 "+data.getStringExtra(DefineField.PARAM_RELOAD_URL))
+
+                }
+
+            }
+        }
+    }
+
+    /**
      * MainWebView Url 로딩 시작 시점
      * **/
     override fun onWebViewStart(view: WebView?, urlType: Int, url: String?) {
         super.onWebViewStart(view, urlType, url)
-
+        LogUtil.d(TAG,"onWebViewStart "+url)
         showBaseLoadingPopup()
     }
 
@@ -93,6 +117,18 @@ class MainActivity : BaseWebViewActivity() {
             hideBaseLoadingPopup()
             setBottomTabPosition(url.toString())
         }
+    }
+
+    override fun onWebViewUrlChange(view: WebView?, urlType: Int, url: String?, isRedirect: Boolean): Boolean {
+
+        // 로그인 요청이 들어올 경우
+        if (urlType == DefineCode.URL_TYPE_LOGIN) {
+//            widgetLogin = true
+            moveLogin(null.toString(), url.toString(), null, false, null)
+            return true
+        }
+
+        return false
     }
 
     /**
@@ -108,7 +144,6 @@ class MainActivity : BaseWebViewActivity() {
      * **/
     private fun init(){
         viewModel.onHttpIntroApi()
-
         viewModel.setBottomData(0,binding.mainTabBar.ivBottomMenu , binding.mainTabBar.menuText  , R.raw.menu_icon , R.raw.menu_icon_dark , R.mipmap.menu_icon)
         viewModel.setBottomData(1,binding.mainTabBar.ivBottomBenefit , binding.mainTabBar.benefitsText  , R.raw.benefit_icon , R.raw.benefit_icon_dark ,R.mipmap.benefit_icon)
         viewModel.setBottomData(2,binding.mainTabBar.ivBottomHome , binding.mainTabBar.myText  , R.raw.home_icon , R.raw.home_icon_dark , R.mipmap.home_icon)
